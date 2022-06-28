@@ -1,27 +1,21 @@
 from karel.stanfordkarel import *
 
 """
-File: collect_newspaper_karel.py
+File: recoger_periodico.py
 ------------------------------
-At present, the collect_newspaper_karel file does nothing.
-Your job in the assignment is to add the necessary code to
-instruct Karel to walk to the door of its house, pick up the
-newspaper (represented by a beeper, of course), and then return
-to its initial position in the upper left corner of the house.
+Actualmente, el documento recoger_periodico no hace nada. 
+Tu deber en esta tarea es añadir el código necesario para instruir a Karel para que camine a las puerta de su casa, recoja el periódico (representado por un cono, por supuesto), y después regrese a su posición inicial en la esquina superior izquierda de la casa. 
+
 """
 
 
 def main():
     """
-    You should write your code to make Karel do its task in
-    this function. Make sure to delete the 'pass' line before
-    starting to write your own code. You should also delete this
-    comment and replace it with a better, more descriptive one.
+    Debes escribir el código necesario para que Karel haga su deber en esta función. Asegúrate de borrar la linea que dice ‘pass’ al antes de comenzar a escribir tu propio código. También debes borrar este comentario y escribir uno más descriptivo. 
     """
     pass
 
 
-# There is no need to edit code beyond this point
-
+#No debes editar nada mas a partir de aquí. No te preocupes por la función de abajo. 
 if __name__ == "__main__":
     run_karel_program()

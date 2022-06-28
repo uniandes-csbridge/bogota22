@@ -653,7 +653,7 @@ filePath - the total path to the markdown file being rendered in this template
 	</h1>
 
 		<p>
-			Credit: Basado en un entregable por Eric Roberts
+			Credit: Creado por Ali Malik
 		</p>
 </div>
 <hr/>
@@ -661,20 +661,20 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>Handouts: <a href="https://compedu.stanford.edu/karel-reader/docs/python/en/reference.html">Karel Reference</a><br/>
-File: <code>salto_arriba.py</code> <br/></p>
-<p>Karel empieza en la parte izquierda del mundo. ¿Cómo programarías a Karel para recoger el cono y transportarlo a la cima de la colina? Karel debería soltar el cono
-en la esquina de la 2da calle y la 3ra avenida, continuando después una esquina mas hacia el este. Al final de tu programa, el mundo de Karel debería verse como la imagen de la derecha:</p>
+		<p>Handouts: <a href="../../es/resources/karel-ref.html">Karel Reference</a><br/>
+File: <code>salta_arriba.py</code> <br/></p>
+<p>Karel empieza en la parte izquierda del mundo. ¿Cómo programarías a Karel pararecoger el cono y transportarlo a la cima de la colina, si la colina tiene una altura de 10? Karel debería soltar el cono en la esquina de la calle 10 y la 3ra avenida, continuando después una esquina mas hacia el este. Piensa en conceptos que has aprendido que te puedan ayudar, ¿utilizarías un for loop? ¿Un while loop? Un if statement? Al final de tu programa, el mundo de Karel debería verse como la imagen de la derecha:</p>
 <p><center>
 <img style="width:700px" class="psetImg" src="../../img/projects/leapUp/leapUp.png">
 </center></p>
-<p>Si Karel solo conoce los comandos:</p>
-<pre><code>moverse()
-recoger_cono()
-poner_cono()
-girar_izquierda()
-</code></pre>
-<p>Como podemos hacer que Karel gire a la derecha?</p>
+<p>¿Qué ocurre si la colina tiene una altura de 7? ¿O 26? Ahora programa a Karel para recoger el cono y transportarlo a la cima de colinas de alturas variadas. Es decir, tu programa debería funcionar en colinas de cualquier altura. Piensa en conceptos que has aprendido que te puedan ayudar, ¿utilizarías un for loop? ¿Un while loop? Un if statement? Puedes asumir lo siguiente para tu programa:</p>
+<p>¿Qué ocurre si la colina tiene una altura de 7? ¿O 26? Ahora programa a Karel para recoger el cono y transportarlo a la cima de colinas de alturas variadas. Es decir, tu programa deberá funcionar en colinas de cualquier altura. Piensa en conceptos que has aprendido que te puedan ayudar, ¿utilizarías un for loop? ¿Un while loop? Un if statement?</p>
+<ol>
+<li>El mundo de Karel siempre tendrá un ancho de 4. La altura de la cima, y por lo tanto, el mundo, podrá variar.</li>
+<li>El cono que Karel debe recoger y transportar siempre estará a la base de la cima, en la esquina de la 1a calle y la 2a avenida. (Tal y como en la imagen de arriba)</li>
+<li>El cono siempre se transportará a la cima de colina, es decir, Karel dejará el cono en la esquina de la 3a avenida y la calle a la altura de la colina.</li>
+<li>Karel siempre avanzará un paso más adelante después de depositar el cono. Es decir, Karel se quedará en la esquina de la 4a avenida y la calle a la altura de la cima al final del programa.</li>
+</ol>
 	</div>
 </div>
 

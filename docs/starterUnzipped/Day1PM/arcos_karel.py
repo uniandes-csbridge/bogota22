@@ -1,24 +1,20 @@
 from karel.stanfordkarel import *
 
 """
-File: arches_karel.py
+File: arcos_karel.py
 ------------------------------
-When you finish writing code in this file, arches_karel should
-solve the "repair the quad" problem (or Charles Bridge, or Efes).
+Cuando termines de escribir el código de este documento, arcos_karel debe solucionar el problema de ‘reparar el palacio narino’ 
 """
 
 
 def main():
     """
-    You should write your code to make Karel do its task in
-    this function. Make sure to delete the 'pass' line before
-    starting to write your own code. You should also delete this
-    comment and replace it with a better, more descriptive one.
+    Debes escribir el código necesario para que Karel haga su deber en esta función. Asegúrate de borrar la linea que dice ‘pass’ al antes de comenzar a escribir tu propio código. También debes borrar este comentario y escribir uno más descriptivo. 
+
     """
     pass
 
 
-# There is no need to edit code beyond this point
-
+#No debes editar mas alla de este punto
 if __name__ == "__main__":
     run_karel_program()
