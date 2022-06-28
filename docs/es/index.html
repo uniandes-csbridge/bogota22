@@ -1,0 +1,1497 @@
+<!--
+	A template used for every page - contains the header, nav bar, a container div, and the footer.
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+<title>CS Bridge  | Home</title>
+
+<!-- Fonts -->
+<!--<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700,900,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900,600italic,700italic,900italic' rel='stylesheet' type='text/css'>-->
+
+<!-- Styles -->
+
+<link href="../plugins/bootstrap-3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../style.css">
+
+<!-- Java Script -->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+
+<!--<script src="../karel/ace/ace.js" type="text/javascript"></script>-->
+
+<!-- Moment.js -->
+<script type="text/javascript" src="../js/moment.min.js"></script>
+<script type="text/javascript" src="../js/moment-timezone-with-data-10-year-range.min.js"></script>
+<script type="text/javascript" src="../js/time.js"></script>
+
+<!-- Date picker -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- Latex support -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<!--
+<script src="../karel/js/html/websiteImports.js"></script>
+<script>importCss();</script>
+<script>importJs();</script>
+-->
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+		<!--<script src="sweetalert2.all.min.js"></script>-->
+<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+-->
+	<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
+	</head>
+	<body>
+
+
+<!-- The datetime editor, for testing -->
+<!--
+This element is the datetime picker shown above the navigation bar, only when running the website
+locally.  It shows a compact form to enter a date and time for when you want to view what the website
+will look like at that time.  This is helpful to preview time-sensitive elements, such as
+visible-after, to ensure they display when you want them to.
+-->
+
+<div id="dateTimeEditor" style="margin: 10px 10px 10px 10px; display: none;">
+	<p style="margin-bottom: 10px;"><b>[VISIBLE ONLY LOCALLY] Optionally view what the website will look like at another time (in PDT):</b></p>
+
+	<form class="form-inline">
+	  	<div class="form-group">
+	    	<label class="sr-only" for="date">Date</label>
+	    	<input type="text" class="form-control" id="datePicker" placeholder="Click For Calendar">
+	  	</div>
+	  	<div class="form-group">
+	    	<label class="sr-only" for="time">Hour</label>
+	    	<input type="number" class="form-control" id="hourPicker" placeholder="Enter Hour (24hr)">
+	  	</div>
+	  	<div class="form-group">
+	  	  	<label class="sr-only" for="time">Minutes</label>
+	  	  	<input type="number" class="form-control" id="minutesPicker" placeholder="Enter Minutes">
+	  	</div>
+
+	  	<button type="button" onclick="dateTimeEditorSubmitted()" class="btn btn-default">Set Time</button>
+
+	  	<!-- Help text -->
+	  	<span id="helpBlock" class="help-block" style="color: red; display: none;">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+	</form>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		// On page load, show the datetime picker if we're running locally
+		var url = window.location.href;
+		if (url.startsWith("http://localhost:") || url.startsWith("file://")) {
+			$("#dateTimeEditor").show();
+			$("#datePicker").datepicker();
+		}
+	});
+
+	// This function is called when the form is submitted
+	function dateTimeEditorSubmitted() {
+		if ($("#datePicker").val() == "" || $("#hourPicker").val() == ""
+			|| $("#minutesPicker").val() == "") {
+			
+			// Not all inputs entered
+			$("#helpBlock").text("Please make sure to fill out all fields.");
+			$("#helpBlock").show();
+		} else if (parseInt($("#hourPicker").val()) == NaN ||
+			parseInt($("#minutesPicker").val()) == NaN ||
+			parseInt($("#hourPicker").val()) > 23 || 
+			parseInt($("#hourPicker").val()) < 0 || 
+			parseInt($("#minutesPicker").val()) > 59 ||
+			parseInt($("#minutesPicker").val()) < 0) {
+			
+			// Invalid inputs
+			$("#helpBlock").text("Please enter an hour 0-23 and minutes 0-59.");
+			$("#helpBlock").show();
+		} else {
+			$("#helpBlock").hide();
+
+			// Re-process the time-sensitive elements with this time as the standard
+			dateString = $("#datePicker").val() + " " + $("#hourPicker").val() + ":" + $("#minutesPicker").val();
+			momentDate = moment(dateString, "MM/DD/YYYY HH:mm");
+
+			showHideRelevantElementsForDate(momentDate);
+		}
+	}
+</script>
+<!-- The navigation bar -->
+<nav class="navbar-inverse navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="container">
+
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../es/index.html">CS Bridge</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+					<!-- Resources dropdown -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Recursos<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="https://compedu.stanford.edu/karel-reader/docs/python/en/intro.html">Libro de Karel</a></li>
+							<li><a href="https://compedu.stanford.edu/karel-reader/docs/python/en/reference.html">Referencia Karel</a></li>
+
+							<!-- Divider only visible once Python resources visible -->
+							<li
+									class="divider visible-after" data-visible-after="2020080600"
+							/>
+
+							<!-- Python reader visible later -->
+							<li
+									class="visible-after" data-visible-after="2020080600"
+							>
+								<a href="https://codeinplace2020.github.io/pythonreader/en/intro/">Libro de Python</a>
+							</li>
+
+							<!-- Python reference visible later -->
+							<li
+									class="visible-after" data-visible-after="2020080600"
+							>
+								<a href="../es/resources/quick-python.html">Referencia Python</a>
+							</li>
+
+							<!-- Graphics reference visible later -->
+							<li
+									class="visible-after" data-visible-after="2020081000"
+							>
+								<a href="../es/resources/graphics.html">Referencia Graficos</a>
+							</li>
+
+							<li class="divider" />
+
+							<!-- Yosefa's Part -->
+							<li class="dropdown-header">Información del curso</li>
+							<li><a href="../es/resources/general-info.html">Información general</a></li>
+							<!-- <li><a href="../es/resources/student-faq.html">[Estudiantes] Preguntas frecuentes</a></li> -->
+							<!-- <li><a href="../es/resources/section-info.html">Información del grupos</a></li> -->
+							<!-- End Yosefa's Part -->
+
+							<!-- <li class="divider" /> -->
+
+							<!-- <li><a href="../es/resources/install.html">Instalación pycharm-how-to</a></li> -->
+							<!-- <li><a href="../es/resources/pycharm-how-to.html">Cómo usar PyCharm</a></li> -->
+							<!-- <li class="divider" /> -->
+							<!-- <li><a href="../es/resources/submission-oh.html">Enviar su tarrea</a></li> -->
+						</ul>
+					</li>
+
+					<!-- Projects dropdown -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Proyectos <b class="caret"></b></a>
+
+<ul class="dropdown-menu">
+
+
+	<!-- This dropdown should display one element for each day of content -->
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022062806"
+		>
+			<a tabindex="-1" href="#">1: Karel</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062806"
+						>
+							Introducción
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062806"
+							>
+								<a href="../es/projects/stepUp/">Paso Arriba</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062806"
+							>
+								<a href="../es/projects/collectNewspaper.html">Recoger Periodico</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062811"
+						>
+							Flujo de control
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062811"
+							>
+								<a href="../es/projects/leapUp.html">Salto Arriba</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062811"
+							>
+								<a href="../es/projects/arches.html">Construir Palacio Nariño</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062811"
+							>
+								<a href="../es/projects/mountain.html">Montaña Karel</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062906"
+						>
+							El refinamiento gradual [TODO]
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062906"
+							>
+								<a href="../es/#">Comprobación de conceptos</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062906"
+							>
+								<a href="../es/#">Refinement project</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062906"
+							>
+								<a href="../es/projects/hospitalKarel.html">Hospital Karel</a>
+							</li>
+			</ul>
+		</li>
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022062911"
+		>
+			<a tabindex="-1" href="#">2: Python</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062911"
+						>
+							Console + Variables
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062911"
+							>
+								<a href="../es/#">Comprobación de conceptos</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062911"
+							>
+								<a href="../es/projects/sandcastles.html">Castillos de Arena</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062911"
+							>
+								<a href="../es/projects/runningSum.html">Suma Acumulada</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022063006"
+						>
+							Flujo de control, otra vez
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../es/#">Comprobación de conceptos</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../es/projects/8ball.html">Bola 8</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../es/projects/viralVideo.html">Video Viral</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022063011"
+						>
+							Funciónes
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022063011"
+							>
+								<a href="../es/#">Comprobación de conceptos</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063011"
+							>
+								<a href="../es/projects/khansole.html">Academia Khan-sola</a>
+							</li>
+			</ul>
+		</li>
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022070106"
+		>
+			<a tabindex="-1" href="#">3: Graficos</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070106"
+						>
+							Graficos
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022070106"
+							>
+								<a href="../es/#">Comprobación de conceptos</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070106"
+							>
+								<a href="../es/projects/programmingIsAwesome.html">Programar es genial</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070106"
+							>
+								<a href="../es/projects/target.html">Tiro al Blanco</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070106"
+							>
+								<a href="../es/projects/randomCircles.html">Circulos Aleatorios</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070111"
+						>
+							Animación
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022070111"
+							>
+								<a href="../es/#">Comprobación de conceptos</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070111"
+							>
+								<a href="../es/projects/mysterySquare.html">Cuadrado misterioso</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070111"
+							>
+								<a href="../es/projects/bouncingBall.html">Pelota que rebota</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070111"
+							>
+								<a href="../es/projects/shortFilm.html">Cortometraje</a>
+							</li>
+			</ul>
+		</li>
+</ul>					</li>
+
+					<!-- Examples dropdown -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ejemplos <b class="caret"></b></a>
+
+<ul class="dropdown-menu">
+
+
+	<!-- This dropdown should display one element for each day of content -->
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022062806"
+		>
+			<a tabindex="-1" href="#">1: Karel</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062806"
+						>
+							Introducción
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062806"
+							>
+								<a href="../es/projects/stepUp/">Paso Arriba</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062811"
+						>
+							Flujo de control
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062811"
+							>
+								<a href="../es/projects/place100/">Poner 100</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062811"
+							>
+								<a href="../es/projects/beeperLine/">Línea de Conos</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062811"
+							>
+								<a href="../es/projects/invertBeeper/">Invertir Conos</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062906"
+						>
+							El refinamiento gradual [TODO]
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062906"
+							>
+								<a href="../es/projects/unKarel/">ONU Karel</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022062906"
+							>
+								<a href="../es/projects/banishWinter/">Desterrar el Envierno</a>
+							</li>
+			</ul>
+		</li>
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022062911"
+		>
+			<a tabindex="-1" href="#">2: Python</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022062911"
+						>
+							Console + Variables
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022062911"
+							>
+								<a href="../es/projects/emc2/">E=MC²</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022063006"
+						>
+							Flujo de control, otra vez
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../es/projects/fibonacci/">Fibonacci</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../es/projects/findPi/">Econtrar Pi</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../es/projects/favoriteNumber/">Numero Favorito</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022063011"
+						>
+							Funciónes
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022063011"
+							>
+								<a href="../es/projects/average/">Función promedio</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063011"
+							>
+								<a href="../es/projects/division/">Division</a>
+							</li>
+			</ul>
+		</li>
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022070106"
+		>
+			<a tabindex="-1" href="#">3: Graficos</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070106"
+						>
+							Graficos
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022070106"
+							>
+								<a href="../es/projects/robotFace/">Cara de Robot</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070106"
+							>
+								<a href="../es/projects/halfGreen/">Mitad Verde</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070106"
+							>
+								<a href="../es/projects/drawPeople/">Dibuja Personas</a>
+							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070111"
+						>
+							Animación
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022070111"
+							>
+								<a href="../es/projects/moveToCenter/">Ir al centro</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070111"
+							>
+								<a href="../es/projects/gravityBall/">Gravedad Ball</a>
+							</li>
+			</ul>
+		</li>
+</ul>					</li>
+
+					<!-- Examples dropdown -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Clases <b class="caret"></b></a>
+
+<ul class="dropdown-menu">
+
+
+	<!-- This dropdown should display one element for each lecture -->
+</ul>					</li>
+
+					<!-- Bonus -->
+					<ul class="nav navbar-nav">
+						<li><a href="../es/bonus-index.html">Bonus</a></li>
+					</ul>
+
+					<!-- TA Link -->
+
+				</ul>
+
+				<!-- Language toggle button -->
+				<!-- <ul class="nav navbar-nav navbar-right">
+						<li><a onclick="changeLanguage('/en/')" style="cursor: pointer;"><img class="languageIcon" src="../img/english_flag.png"></img></a></li>
+				</ul> -->
+
+			</div>
+		</div>
+	</div>
+</nav>
+
+<!-- Script to toggle between languages-->
+<script>
+	function changeLanguage(toLang) {
+		var url = window.location.href;
+		var fromLang = null;
+		const langs = ["/en/", "/es/", "/tr/"];
+		for(i = 0; i < langs.length; i++) {
+			if(url.indexOf(langs[i]) !== -1) {
+				fromLang = langs[i];
+				break;
+			}
+		}
+		console.assert(fromLang !== null, 'Couldnt determing fromLang: ' + url);
+		console.assert(langs.indexOf(toLang) !== -1, 'toLang invalid: ' + toLang)
+		url = url.replace(fromLang, toLang);
+		window.location.href = url;
+	}
+
+	function changeToTurkish() {
+		var url = window.location.href;
+		url = url.replace("/en/", "/tr/");
+		window.location.href = url;
+	}
+
+	function changeToEnglish() {
+		var url = window.location.href;
+		url = url.replace("/tr/", "/en/");
+		window.location.href = url;
+	}
+</script>
+
+		<div class="container">
+			
+<div class="page-header">
+	<div class="container">
+		<div>
+        	<div id="logo">
+				<img id="logoImg" src="../img/logo.jpeg"/>
+			</div>
+			<div id="headerText" style="padding-bottom:15px;">
+				<div class="h1" style="margin-top:0px;font-size:40px;">
+					Introducción a la programación
+				</div>
+				<div>
+					Verano 2022
+				</div>
+				<div>
+					Del 28 de junio al 8 de julio en la Universidad de los Andes, Bogotá.
+				</div>
+			</div>
+        </div>
+	</div>
+</div>
+
+<br />
+
+<!-- % include('templates/announcements/announcements.ptl', lang='es') -->
+
+<div>
+	<h2>La idea del Curso</h2>
+
+	<p>
+		El objetivo de este curso de dos semanas es enseñarles los fundamentos de programación para que puedan seguir aprendiendo más por su cuenta. El curso es enseñado de forma conjunta por instructores de Stanford y de la Universidad de los Andes. El curso está basado en recursos pedagógicos del curso "Introducción a las Ciencias de la Computación" de Stanford.
+	</p>
+</div>
+
+
+
+<hr/>
+
+<!-- Daily schedule / list of programs -->
+<div class="section" id="schedule">
+	<h2>Los programas</h2>
+
+
+<table class="table table-striped">
+
+
+		<!-- The head of the table should show the day's topic title -->
+		<thead
+				class="visible-after" data-visible-after="2022070106"
+		>
+			<tr>
+				<th colspan = "6" style="text-align: center; font-style: italic;">
+					<br/>
+					<b>
+							<h3>Graficos </h3>
+					</b>
+				</th>
+			</tr>
+		</thead>
+
+				<tr
+						class="info visible-after" data-visible-after="2022070106"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>Graficos [<a href="../#">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022070106"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../#" />
+</td>
+<td>
+	<a href="../es/#">Comprobación de conceptos</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>TODO</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/programmingIsAwesome/demo.png" />
+</td>
+<td>
+	<a href="../es/projects/programmingIsAwesome.html">Programar es genial</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Graficos</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/target/target.png" />
+</td>
+<td>
+	<a href="../es/projects/target.html">Tiro al Blanco</a>
+    <br/>
+
+    <span class="label label-primary">Sección</span>
+</td>
+<td>Graficos</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/randomCircles/demo1.png" />
+</td>
+<td>
+	<a href="../es/projects/randomCircles.html">Circulos Aleatorios</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Graficos y Aleatoriedad</td>		      			</tr>
+		      	</tbody>
+				<tr
+						class="info visible-after" data-visible-after="2022070111"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>Animación [<a href="../#">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022070111"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../#" />
+</td>
+<td>
+	<a href="../es/#">Comprobación de conceptos</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>TODO</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/mysterySquare/mysterySquare.png" />
+</td>
+<td>
+	<a href="../es/projects/mysterySquare.html">Cuadrado misterioso</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Animación</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/bouncingBall/demo.png" />
+</td>
+<td>
+	<a href="../es/projects/bouncingBall.html">Pelota que rebota</a>
+    <br/>
+
+    <span class="label label-primary">Sección</span>
+</td>
+<td>Animación</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/shortfilm/sunset.png" />
+</td>
+<td>
+	<a href="../es/projects/shortFilm.html">Cortometraje</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Animasyon</td>		      			</tr>
+		      	</tbody>
+
+		<!-- Display a row at the very bottom of this day's projects mentioning the bonus page, unless this day does not have bonus activities -->
+  		  	<tr
+  		  			class="active visible-after" data-visible-after="2022070106"
+  		  	>
+  				<td colspan = "6">
+  					<center>
+							Buscando por mas? ¡Mire los <a href="../es/bonus-index.html">problemas de bonificación</a> opcionales!
+  					</center>
+  				</td>
+  			</tr>
+
+		<!-- The head of the table should show the day's topic title -->
+		<thead
+				class="visible-after" data-visible-after="2022062911"
+		>
+			<tr>
+				<th colspan = "6" style="text-align: center; font-style: italic;">
+					<br/>
+					<b>
+							<h3>Python </h3>
+					</b>
+				</th>
+			</tr>
+		</thead>
+
+				<tr
+						class="info visible-after" data-visible-after="2022062911"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>Console + Variables [<a href="../#">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022062911"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../#" />
+</td>
+<td>
+	<a href="../es/#">Comprobación de conceptos</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>TODO</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/sandcastles/sandcastle.jpg" />
+</td>
+<td>
+	<a href="../es/projects/sandcastles.html">Castillos de Arena</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Variables</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/runningSum/runningSum.png" />
+</td>
+<td>
+	<a href="../es/projects/runningSum.html">Suma Acumulada</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Variables</td>		      			</tr>
+		      	</tbody>
+				<tr
+						class="info visible-after" data-visible-after="2022063006"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>Flujo de control, otra vez [<a href="../#">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022063006"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../#" />
+</td>
+<td>
+	<a href="../es/#">Comprobación de conceptos</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>TODO</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/8Ball/8ball.png" />
+</td>
+<td>
+	<a href="../es/projects/8ball.html">Bola 8</a>
+    <br/>
+
+    <span class="label label-primary">Sección</span>
+</td>
+<td>Condicionales</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/viralvideo/viralVideo.png" />
+</td>
+<td>
+	<a href="../es/projects/viralVideo.html">Video Viral</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Condicionales</td>		      			</tr>
+		      	</tbody>
+				<tr
+						class="info visible-after" data-visible-after="2022063011"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>Funciónes [<a href="../#">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022063011"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../#" />
+</td>
+<td>
+	<a href="../es/#">Comprobación de conceptos</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>TODO</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/khansole/khansole.png" />
+</td>
+<td>
+	<a href="../es/projects/khansole.html">Academia Khan-sola</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>Condicionales</td>		      			</tr>
+		      	</tbody>
+
+		<!-- Display a row at the very bottom of this day's projects mentioning the bonus page, unless this day does not have bonus activities -->
+
+		<!-- The head of the table should show the day's topic title -->
+		<thead
+				class="visible-after" data-visible-after="2022062806"
+		>
+			<tr>
+				<th colspan = "6" style="text-align: center; font-style: italic;">
+					<br/>
+					<b>
+							<h3>Karel </h3>
+					</b>
+				</th>
+			</tr>
+		</thead>
+
+				<tr
+						class="info visible-after" data-visible-after="2022062806"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>Introducción [<a href="../starter/Day1AM.zip">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022062806"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/stepUp/stepUpDispl.png" />
+</td>
+<td>
+	<a href="../es/projects/stepUp/">Paso Arriba</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>Karel</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/newspaper/newspaper.jpg" />
+</td>
+<td>
+	<a href="../es/projects/collectNewspaper.html">Recoger Periodico</a>
+    <br/>
+
+    <span class="label label-primary">Sección</span>
+</td>
+<td>Funciónes</td>		      			</tr>
+		      	</tbody>
+				<tr
+						class="info visible-after" data-visible-after="2022062811"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>Flujo de control [<a href="../starter/Day1PM.zip">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022062811"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/leapUp/stairs.jpeg" />
+</td>
+<td>
+	<a href="../es/projects/leapUp.html">Salto Arriba</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>Bucles</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/efes/charles.jpg" />
+</td>
+<td>
+	<a href="../es/projects/arches.html">Construir Palacio Nariño</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>El Bucle for</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/mountain/mountain.png" />
+</td>
+<td>
+	<a href="../es/projects/mountain.html">Montaña Karel</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>El Bucle while</td>		      			</tr>
+		      	</tbody>
+				<tr
+						class="info visible-after" data-visible-after="2022062906"
+				>
+					<!-- Display the name of this part of the day and the link for its starter code -->
+	      			<td colspan = "6">
+	      				<center>
+	      					<h4>El refinamiento gradual [TODO] [<a href="../starter/Day2AM.zip">aquí</a>]</h4>
+	      				</center>
+	      			</td>
+	      		</tr>
+
+	      		<!-- Display the projects for this part of the day -->
+	      		<tbody
+						class="visible-after" data-visible-after="2022062906"
+	      		>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../#" />
+</td>
+<td>
+	<a href="../es/#">Comprobación de conceptos</a>
+    <br/>
+
+    <span class="label label-info">Comprobación de conceptos</span>
+</td>
+<td>TODO</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../#" />
+</td>
+<td>
+	<a href="../es/#">Refinement project</a>
+    <br/>
+
+    <span class="label label-success">Proyecto</span>
+</td>
+<td>TODO</td>		      			</tr>
+		      			<tr>
+
+<td>
+	<img class="projectImg" src="../img/projects/hospitalkarel/hospitalkarel.png" />
+</td>
+<td>
+	<a href="../es/projects/hospitalKarel.html">Hospital Karel</a>
+    <br/>
+
+    <span class="label label-primary">Sección</span>
+</td>
+<td>Bucles Anidados</td>		      			</tr>
+		      	</tbody>
+
+		<!-- Display a row at the very bottom of this day's projects mentioning the bonus page, unless this day does not have bonus activities -->
+  		  	<tr
+  		  			class="active visible-after" data-visible-after="2022062806"
+  		  	>
+  				<td colspan = "6">
+  					<center>
+							Buscando por mas? ¡Mire los <a href="../es/bonus-index.html">problemas de bonificación</a> opcionales!
+  					</center>
+  				</td>
+  			</tr>
+
+</table>
+</div>
+
+<hr/>
+
+<!-- Course Staff -->
+<div class="section" id="staff">
+	<h2>Profesores</h2>
+
+	  	<div class="row">
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/ali.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Ali</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/kelly.png" alt="profile picture">
+				  		<div class="caption">
+							<b>Kelly</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/carlos.jpeg" alt="profile picture">
+				  		<div class="caption">
+							<b>Carlos</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/jaime.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Jaime</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/maria.jpeg" alt="profile picture">
+				  		<div class="caption">
+							<b>María</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/isabela.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Isabela</b>
+				  		</div>
+					</div>
+		  		</div>
+	  	</div>
+	  	<div class="row">
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/santiago.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Santiago</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/juliana.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Juliana</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/nicolas.jpeg" alt="profile picture">
+				  		<div class="caption">
+							<b>Nicolás</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/valeria.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Valeria</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/nestor.jpeg" alt="profile picture">
+				  		<div class="caption">
+							<b>Néstor</b>
+				  		</div>
+					</div>
+		  		</div>
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/juan.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Juan</b>
+				  		</div>
+					</div>
+		  		</div>
+	  	</div>
+	  	<div class="row">
+		  		<div class="col-xs-2">
+					<div class="thumbnail">
+			  			<img class="thumbnailImg" src="../img/staff/default.jpg" alt="profile picture">
+				  		<div class="caption">
+							<b>Daniel</b>
+				  		</div>
+					</div>
+		  		</div>
+	  	</div>
+</div>
+
+<hr/>
+
+<!-- Curriculum Overview -->
+<div class="section" id="playWithKarel">
+	<h2>Plan de estudios</h2>
+	<img src = "../img/resources/curriculum_es.jpeg" style="width:100%"></img>
+</div>
+
+
+<!--<div class="section" id="playWithKarel">
+	<h2>
+		Play With Karel
+	</h2>
+
+	<p>Meet Karel, The Java Robot that Stanford uses to introduce university students to programming. </p>
+
+	<p>Use Karel's commands to get her to move the beeper to the top of the ledge. Normally you will write your programs in an application called Eclipse, but to get you started we made a mini-eclipse for our website:
+	</p>
+
+
+<div style="width:100%;">
+	<div id="runButtonBar" class="buttonBar"></div> 
+       <script>importButtonBar();</script>
+</div>
+   <div id ='mainIde' class = "getStarted">
+ 
+      <div id = "mainIdeCenter" >
+      	
+         <div id = 'mainIdeEditorDiv'>
+            <script>importEditor('mainIdeEditor','mainIdeEditorDiv');</script>
+         </div>
+         <div id = 'mainIdeCanvasDiv' class = 'orange'>
+            <canvas id = 'mainIdeCanvas' class = 'red'></canvas>
+         </div>
+         
+      </div>
+
+   </div>
+
+
+   
+   
+
+<script>
+
+		
+
+  function init() {
+  	 var stepUpWorld = null;
+     var karelIde = null;
+
+     var onReadyCalled = false;
+
+     var buttonState = 'play';
+
+     document.onready = function() {
+        if (onReadyCalled) return;
+        onReadyCalled = true;
+        $("[title]").tooltip({ position: "bottom center", opacity: 0.9});
+        
+        initTabs();
+        var canvas = document.getElementById('mainIdeCanvas');
+        karelIde = KarelIde(window._editor, canvas, 'collectNewspaper');
+
+        var stepUpCanvase = document.getElementById('firstIdeCanvas');
+        stepUpWorld = KarelIde(window._editor, stepUpCanvase, '5x5');
+        
+        $('#playButton').click(function(){playClicked()});
+        $('#move').click(function(){stepUpWorld.stepMove()});
+        $('#left').click(function(){stepUpWorld.stepTurnLeft()});
+        $('#right').click(function(){stepUpWorld.stepTurnRight()});
+        $('#put').click(function(){stepUpWorld.stepPutBeeper()});
+        $('#pick').click(function(){stepUpWorld.stepPickBeeper()});
+        /*$('#worldSelector').change(
+           function() {
+              var worldName = $("#worldSelector option:selected").text();
+              karelIde.stopButton();
+              var playText = '<span class="glyphicon glyphicon-play"></span> Run Program';
+         	  $('#playButton').html(playText);
+         	  buttonState = 'play';
+	          karelIde.changeWorld(worldName);
+	        }
+        );*/
+        window.onresize();
+        
+     }
+
+     function playClicked() {
+     	if(buttonState == 'play') {
+     		karelIde.playButton();
+         	
+         	var resetText = '<span class="glyphicon glyphicon-repeat"></span> Reset Program';
+         	$('#playButton').html(resetText);
+         	buttonState = 'reset';
+         } else if (buttonState == 'reset') {
+         	karelIde.stopButton();
+         	var playText = '<span class="glyphicon glyphicon-play"></span> Run Program';
+         	$('#playButton').html(playText);
+         	buttonState = 'play';
+         }
+     	
+   }
+
+     window.onresize = function() { 
+        var parentHeight = 600;
+        var canvasWidth = 300
+        var parentWidth = $("#playWithKarel").width();
+        console.log('pw: ' + parentWidth);
+
+        var ide = document.getElementById('mainIde');
+        var editorDiv = document.getElementById('mainIdeEditorDiv');
+        var canvas = document.getElementById('mainIdeCanvasDiv');
+        var center = document.getElementById('mainIdeCenter');
+        
+        var ideHeight = parentHeight
+        ide.style.height = (ideHeight)+ 'px';
+        ide.style.width = parentWidth + 'px';
+        
+        var centerHeight = ideHeight;
+        center.style.height = centerHeight + 'px';
+        center.style.width = parentWidth + 'px';
+
+        //center.style.top = centerTop + 'px';
+
+        var availibleWidth = parentWidth ;
+        var elementSpacing = 12;
+
+        
+        var editorWidth = availibleWidth - canvasWidth - elementSpacing; 
+
+        canvas.style.width = canvasWidth + 'px';
+        canvas.style.height = canvasWidth + 'px';
+        canvas.style.left = (editorWidth + elementSpacing) + 'px';
+
+       	
+       	//editorWidth = Math.max(editorWidth, Const.MIN_EDITOR_WIDTH)
+
+        editorDiv.style.left = 0 + 'px'
+        editorDiv.style.width = editorWidth + 'px';
+
+        if (karelIde) {
+           karelIde.resizeCanvas(canvasWidth, canvasWidth);
+           stepUpWorld.resizeCanvas($("#firstIdeCanvas").width(), 200);
+        }
+        if (window._editor) {
+           window._editor.renderer.onResize();
+        }
+        ReferenceDialog.resize();
+        DeployDialog.resize();
+     }
+
+     
+  }
+  init();
+</script></div>-->
+
+
+
+<hr>
+
+<div class="footer">
+	<p class="pull-left">
+
+		<!-- Start of content that must be translated -->
+			&#169; Stanford &#124; Creado por
+    		<a href="http://stanford.edu/~cpiech">Chris</a> con la ayuda de todo el equipo.
+			Basado en la maraveilosa curso CS106A lo que creia por muchas profesores talentosos. Un agradecimiento especial a <a href="http://cs.stanford.edu/people/eroberts/">Eric Roberts</a> y <a href="http://robotics.stanford.edu/~sahami/bio.html">Mehran Sahami</a>.
+		<!-- End of content that must be translated -->
+	</p>
+</div>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-35433298-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+<script type="text/javascript">
+    var pubnubDemo = new PubNub({
+        subscribeKey: 'sub-c-f79c3cd0-a4b5-11e9-aaf3-de35c74afaf8'
+    });
+
+	// Subscribe to the demo_tutorial channel
+	pubnubDemo.addListener({
+	    message: function(request) {
+	    	let msg = request['message']
+	    	console.log(msg)
+	    	let swalData = msg['swal'];
+	    	console.log(swalData)
+        Swal.fire(swalData)
+	    }
+	})
+
+	pubnubDemo.subscribe({
+	    channels: ['csbridge_alert']
+	});
+</script>
+		</div>
+
+	</body>
+</html>
