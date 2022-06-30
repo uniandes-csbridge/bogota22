@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-<title>CS Bridge  | Ancient Game of Nimm</title>
+<title>CS Bridge  | Antiguo juego de Nim</title>
 
 <!-- Fonts -->
 <!--<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700,900,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -315,17 +315,22 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022063006"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
-							</li>
-							<li
-									class="visible-after" data-visible-after="2022063006"
-							>
-								<a href="../../es/projects/8ball.html">Bola 8</a>
+								<a href="../../es/projects/someSum.html">Algo de Suma</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022063006"
 							>
 								<a href="../../es/projects/viralVideo.html">Video Viral</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../../es/projects/nimm.html">Antiguo juego de Nim</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../../es/projects/8ball.html">Bola 8</a>
 							</li>
 						<li 
 								class="dropdown-header visible-after" data-visible-after="2022063011"
@@ -336,7 +341,7 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022063011"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
+								<a href="../../es/projects/funkyFunctions.html">Funciónes Funky</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022063011"
@@ -361,12 +366,12 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
+								<a href="../../es/projects/programmingIsAwesome.html">Programar es genial</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/projects/programmingIsAwesome.html">Programar es genial</a>
+								<a href="../../es/projects/randomCircles.html">Circulos Aleatorios</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022070106"
@@ -376,7 +381,7 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/projects/randomCircles.html">Circulos Aleatorios</a>
+								<a href="../../es/projects/stringArt.html">Arte de cuerdas</a>
 							</li>
 						<li 
 								class="dropdown-header visible-after" data-visible-after="2022070111"
@@ -649,7 +654,7 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Header -->
 <div id="pageHeader">
 	<h1>
-		Ancient Game of Nimm
+		Antiguo juego de Nim
 	</h1>
 
 		<p>
@@ -661,102 +666,48 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>Worked Examples: <a href="../../en/projects/emc2.html">E=MC2</a>, <a href="../../en/projects/fibb.html">Fibonacci</a><br/>
+		<p>Ejemplos trabajados: <a href="../../es/projects/emc2.html">E=MC2</a>, <a href="../../es/projects/fibb.html">Fibonacci</a><br/>
 File: <code>nimm.py</code></p>
-<p>Nimm is an ancient game of strategy that is named after the old German word for "take." It is also called Tiouk Tiouk in West Africa and Tsynshidzi in China. Players alternate taking stones until there are zero left. The game of Nimm goes as follows:</p>
-<ol>
-<li>The game starts with a pile of 20 stones between the players</li>
-<li>The two players alternate turns</li>
-<li>On a given turn, a player may take either 1 or 2 stone from the center pile</li>
-<li>The two players continue until the center pile has run out of stones.</li>
-</ol>
-<p>The last player to take a stone loses. Here is sample output from an example execution:</p>
-<pre><code>There are 20 stones left
-Player 1 would you like to remove 1 or 2 stones? 2
-
-There are 18 stones left
-Player 2 would you like to remove 1 or 2 stones? 2
-
-There are 16 stones left
-Player 1 would you like to remove 1 or 2 stones? 1
-
-There are 15 stones left
-Player 2 would you like to remove 1 or 2 stones? 2
-
-There are 13 stones left
-Player 1 would you like to remove 1 or 2 stones? 2
-
-There are 11 stones left
-Player 2 would you like to remove 1 or 2 stones? 1
-
-There are 10 stones left
-Player 1 would you like to remove 1 or 2 stones? 2
-
-There are 8 stones left
-Player 2 would you like to remove 1 or 2 stones? -1
-Please enter 1 or 2: 2
-
-There are 6 stones left
-Player 1 would you like to remove 1 or 2 stones? 2
-
-There are 4 stones left
-Player 2 would you like to remove 1 or 2 stones? 2
-
-There are 2 stones left
-Player 1 would you like to remove 1 or 2 stones? 1
-
-There are 1 stones left
-Player 2 would you like to remove 1 or 2 stones? 1
-
-Player 1 wins!
-</code></pre>
-<p>Write a program to play Nimm. To make your life easier we have broken the problem down into smaller milestones. You have a lot of time for this program. Take it slowly, piece by piece.</p>
-<h2 id="milestone-1">Milestone 1</h2>
+<p>Nimm es un antiguo juego de estrategia que lleva el nombre de la antigua palabra alemana para "tomar". También se llama Tiouk Tiouk en África occidental y Tsynshidzi en China. Los jugadores alternan tomando piedras hasta que queda cero. El juego de Nimm es el siguiente:</p>
+<p>El juego comienza con un montón de 20 piedras entre los jugadores.
+Los dos jugadores alternan turnos.
+En un turno dado, un jugador puede tomar 1 o 2 piedras de la pila central
+Los dos jugadores continúan hasta que la pila central se ha quedado sin piedras.
+El último jugador en tomar una piedra pierde. Aquí hay una captura de pantalla de un ejemplo de ejecución:</p>
+<p><center>
+    <img style="width:600px"  src="../../img/projects/nimm/nimm.png">
+</center></p>
+<p>Escribe un programa para jugar a Nimm. Para hacer su vida más fácil, hemos dividido el problema en hitos más pequeños. Tienes mucho tiempo para este programa. Tómalo despacio, pieza por pieza.</p>
+<h2 id="hito-1">Hito 1</h2>
+<p>Comience con 20 piedras. Repita el proceso de quitar piedras e imprimir cuántas piedras quedan hasta que haya menos de cero. No te preocupes por quién es el turno. No se preocupe por asegurarse de que solo se eliminen una o dos piedras. Use el método <code>input(msg)</code> que imprime <code>msg</code> y espera a que el usuario ingrese un número.</p>
 <p>Start with 20 stones. Repeat the process of removing stones and printing out how many stones are left until there are zero. Don't worry about whose turn it is. Don't worry about making sure only one or two stones are removed. Use the function <code>input(msg)</code> which prints <code>msg</code> and waits for the user to enter something.</p>
-<pre><code>There are 20 stones left
-Would you like to remove 1 or 2 stones? 2
-
-There are 18 stones left
-Would you like to remove 1 or 2 stones? 17
-
-There are 1 stones left
-Would you like to remove 1 or 2 stones? 3
-
-Game over
-</code></pre>
-<h2 id="milestone-2">Milestone 2</h2>
-<p>Create an integer variable to keep track of whose turn it is (remember there are two players). Tell the user whose turn it is. Each time someone picks up stones, change the player number.</p>
-<pre><code>There are 20 stones left
-Player 1 would you like to remove 1 or 2 stones? 1
-
-There are 19 stones left
-Player 2 would you like to remove 1 or 2 stones? 1
-
-There are 18 stones left
-Player 1 would you like to remove 1 or 2 stones? 17
-
-There are 1 stones left
-Player 2 would you like to remove 1 or 2 stones? 1
-
-Game over
-</code></pre>
+<p><center>
+    <img style="width:600px"  src="../../img/projects/nimm/nimm_m1.png">
+</center></p>
+<h2 id="hito-2">Hito 2</h2>
+<p>Cree una variable de tipo <code>int</code> para realizar un seguimiento de quién es el turno (recuerde que hay dos jugadores). Dile al usuario de quién es el turno. Cada vez que alguien recoja piedras, cambie el número de jugador.</p>
+<p><center>
+    <img style="width:600px"  src="../../img/projects/nimm/nimm_m2.png">
+</center></p>
 <h2 id="milestone-3">Milestone 3</h2>
-<p>Make sure that each turn only one or two stones are removed. After you read a number of stones to remove from a user (their input), you can use the following pattern to check if it was valid and keep asking until it is valid.</p>
-<pre><code>while input is invalid:
-   input = int(input(&quot;Please enter 1 or 2: &quot;))
-</code></pre>
-<h2 id="milestone-4">Milestone 4</h2>
-<p>Announce the winner.</p>
+<p>Asegúrese de que en cada vuelta solo se eliminen una o dos piedras. Después de leer un número de piedras para eliminar de un usuario (su entrada), puede usar el siguiente patrón para verificar si era válido y seguir preguntando hasta que sea válido.</p>
+<pre>
+while <span style="color:blue; font-style:italic;">entrada is inválido</span>:
+   entrada = int(input("Por favor ingrese 1 o 2: "))
+</pre>
+
+<h2 id="hito-4">Hito 4</h2>
+<p>Anuncia el ganador.</p>
 <h2 id="extensions">Extensions</h2>
-<p>Can you write an AI opponent? You can start with a dummy AI that always plays a random number. Then try to make one that plays intelligently...</p>
-<p>Some other extension ideas:</p>
+<p>¿Puedes escribir un oponente de la IA? Puedes comenzar con una IA ficticia que siempre reproduce un número aleatorio. Luego trata de hacer uno que juegue inteligentemente ...</p>
+<p>Algunas otras ideas de extensión:</p>
 <ul>
-<li>Make sure that if there is only one stone left, the last player may only remove one stone</li>
-<li>Give the user the option for the winner to be the player that doesn’t take the last stone, or the player that does take the last stone.</li>
-<li>Expand the game to let players take 1, 2, or 3, stones per turn.</li>
-<li>Divisible by 3 rule: if the number of stones remaining at the end of a player’s turn is divisible by 3, they must go again.</li>
-<li>Give the user the option to play against the computer and design a process for the computer to choose how many stone to remove.</li>
-<li>Come up with your own extension!</li>
+<li>Asegúrate de que si solo queda un palo, el último jugador solo puede quitar una piedra.</li>
+<li>Ofrezca al usuario la opción de que el ganador sea el jugador que no tome la última piedra o el jugador que tome la última piedra.</li>
+<li>Expanda el juego para permitir que los jugadores tomen 1, 2 o 3 palos por turno.</li>
+<li>Regla divisible por 3: si el número de palos que quedan al final del turno de un jugador es divisible por 3, deben volver a irse.</li>
+<li>Ofrezca al usuario la opción de jugar contra la computadora y diseñar un proceso para que la computadora elija la cantidad de palos que desea eliminar.</li>
+<li>Crea tu propia extensión.</li>
 </ul>
 	</div>
 </div>

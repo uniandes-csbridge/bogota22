@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-<title>CS Bridge  | String Art</title>
+<title>CS Bridge  | Arte de cuerdas</title>
 
 <!-- Fonts -->
 <!--<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700,900,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -315,17 +315,22 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022063006"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
-							</li>
-							<li
-									class="visible-after" data-visible-after="2022063006"
-							>
-								<a href="../../es/projects/8ball.html">Bola 8</a>
+								<a href="../../es/projects/someSum.html">Algo de Suma</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022063006"
 							>
 								<a href="../../es/projects/viralVideo.html">Video Viral</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../../es/projects/nimm.html">Antiguo juego de Nim</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../../es/projects/8ball.html">Bola 8</a>
 							</li>
 						<li 
 								class="dropdown-header visible-after" data-visible-after="2022063011"
@@ -336,7 +341,7 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022063011"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
+								<a href="../../es/projects/funkyFunctions.html">Funciónes Funky</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022063011"
@@ -361,12 +366,12 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
+								<a href="../../es/projects/programmingIsAwesome.html">Programar es genial</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/projects/programmingIsAwesome.html">Programar es genial</a>
+								<a href="../../es/projects/randomCircles.html">Circulos Aleatorios</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022070106"
@@ -376,7 +381,7 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/projects/randomCircles.html">Circulos Aleatorios</a>
+								<a href="../../es/projects/stringArt.html">Arte de cuerdas</a>
 							</li>
 						<li 
 								class="dropdown-header visible-after" data-visible-after="2022070111"
@@ -649,11 +654,11 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Header -->
 <div id="pageHeader">
 	<h1>
-		String Art
+		Arte de cuerdas
 	</h1>
 
 		<p>
-			Credit: Based on a demonstration by Eric Roberts
+			Credit: Eric Roberts
 		</p>
 </div>
 <hr/>
@@ -661,26 +666,27 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>Handouts: <a href="../../en/resources/graphics.html">Graphics Reference</a><br/></p>
-<p>By repeatedly drawing lines, we can make a curved looking shape. Consider the example below where we imagine dots evenly space along the bottom and the left of a canvas. If we connect the topmost dot on the left edge to the left most dot on the bottom edge, we would be a line like the picture of the far left. If we then connect the next 9 dots we get a picture in the middle and if we connect all dots we get the picture on the right.</p>
+		<p>Handouts: <a href="../../es/resources/graphics.html">Graphics Reference</a><br/>
+File: <code>arte_de_cuerdas.py</code><br/></p>
+<p>Al dibujar repetidamente líneas, podemos hacer una forma de aspecto curvo. Considere el siguiente ejemplo donde imaginamos que los puntos se espacian uniformemente a lo largo de la parte inferior e izquierda de un lienzo. Si conectamos el punto superior en el borde izquierdo al punto más a la izquierda en el borde derecho, seríamos una línea como la imagen del extremo izquierdo. Si luego conectamos los próximos 10 puntos, obtendremos una imagen en el medio y si conectamos todos los puntos, obtendremos la imagen de la derecha.</p>
 <p><center>
   <img style="width:600px;" src="../../img/projects/stringArt/startToEnd.png">
 </center></p>
-<p>Write a program that creates the "curve" in the above right image using straight lines.</p>
+<p>Escriba un programa que cree la "curva" en la imagen de arriba a la derecha usando líneas rectas.</p>
 <h2 id="hints-and-tips">Hints and Tips</h2>
 <ul>
 <li>
-<p>Remember that you can use the loop variable of a <code>for</code> loop:</p>
+<p>Recuerde que puedes usar el variable del bucle <code>for</code>:</p>
 <pre><code>for i in range(NUM_LINES):
-    ... some code that uses i here to draw lines...
+    # ... algún código que usa i para dibujar líneas...
 </code></pre>
-<p>This program can be completed with a single <code>for</code> loop by using the loop variable, <code>i</code>. Do you see how? (Hint: We know that the topmost dot on the left edge can <em>only</em> connect to the leftmost dot on the bottom edge. Let's suppose this is the line we draw when <code>i = 0</code>. What about for when <code>i = 1</code>? The second dot from the top on the left edge can only connect to one specific dot on the bottom edge! And so on...)</p>
+<p>Este programa se puede completar con un solo bucle <code>for</code>, utilizando la variable del bucle: <code>i</code>. Ves como?</p>
 </li>
 <li>
-<p>Check out the <a href="../../en/resources/graphics.html">Graphics Reference</a> (click on "Show/Hide Quick Reference") for tips on how to draw lines onto the canvas.</p>
+<p>Mira al <a href="../../en/resources/graphics.html">Graphics Reference</a> (click on "Show/Hide Quick Reference") para obtener coesjos sobre cómo dibujar líneas en el lienzo.</p>
 </li>
 <li>
-<p>Use a pencil and paper to sketch out your idea! Even though we're coding using the computer, sometimes it's useful to first draw what you think is happening, and then write out the code.</p>
+<p>Usa lápiz y papel para probar tu idea! Aunque estamos programando usando la computadora, a veces es útil a dibujar primero lo que crees que está pasando y luego escribir el código.</p>
 </li>
 </ul>
 	</div>

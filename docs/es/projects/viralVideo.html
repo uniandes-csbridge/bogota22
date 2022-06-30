@@ -315,17 +315,22 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022063006"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
-							</li>
-							<li
-									class="visible-after" data-visible-after="2022063006"
-							>
-								<a href="../../es/projects/8ball.html">Bola 8</a>
+								<a href="../../es/projects/someSum.html">Algo de Suma</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022063006"
 							>
 								<a href="../../es/projects/viralVideo.html">Video Viral</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../../es/projects/nimm.html">Antiguo juego de Nim</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022063006"
+							>
+								<a href="../../es/projects/8ball.html">Bola 8</a>
 							</li>
 						<li 
 								class="dropdown-header visible-after" data-visible-after="2022063011"
@@ -336,7 +341,7 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022063011"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
+								<a href="../../es/projects/funkyFunctions.html">Funciónes Funky</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022063011"
@@ -361,12 +366,12 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/#">Comprobación de conceptos</a>
+								<a href="../../es/projects/programmingIsAwesome.html">Programar es genial</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/projects/programmingIsAwesome.html">Programar es genial</a>
+								<a href="../../es/projects/randomCircles.html">Circulos Aleatorios</a>
 							</li>
 							<li
 									class="visible-after" data-visible-after="2022070106"
@@ -376,7 +381,7 @@ visible-after, to ensure they display when you want them to.
 							<li
 									class="visible-after" data-visible-after="2022070106"
 							>
-								<a href="../../es/projects/randomCircles.html">Circulos Aleatorios</a>
+								<a href="../../es/projects/stringArt.html">Arte de cuerdas</a>
 							</li>
 						<li 
 								class="dropdown-header visible-after" data-visible-after="2022070111"
@@ -661,12 +666,23 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>File: <code>viral_video.py</code></p>
+		<p>File: <code>video_viral.py</code></p>
 <p>Estas intentando volverte viral a partir de un video! Escribe un programa que tome de entrada: (1) un objetivo de vistas, y (2) una tasa de crecimiento. Tu programa debe computar el número de días que le toma llegar al objetivo, como se ve abajo:</p>
-<p><center>
-    <img style="width:500px" src="../../img/projects/viralvideo/output.png">
-    <p style="text-align:center"><i>Un ejemplo con (1) Objetivo en 100 y (2) una tasa de crecimiento de 3.</i></p>
-</center></p>
+<div>
+<pre>
+Entre su objetivo de vistas: <span style="color:blue; font-style:bold;">100</span>
+Entre la tasa de crecimiento: <span style="color:blue; font-style:bold;">3</span>
+Día: 1: 1 vistas.
+Día: 2: 3 vistas.
+Día: 3: 9 vistas.
+Día: 4: 27 vistas.
+Día: 5: 81 vistas.
+Día: 6: 243 vistas.
+Tomó 6 días alcanzar o superar su objetivo de 100 vistas!
+</pre>
+<p style="text-align:center"><i>Un ejemplo con (1) Objetivo en 100 y (2) una tasa de crecimiento de 3.</i></p>
+</div>
+
 <h2 id="tasas-de-crecimiento">Tasas de Crecimiento.</h2>
 <p>Todos los días, tu total de vistas se multiplica por la tasa de crecimiento. En el ejemplo de arriba, la tasa es 3, significando que:</p>
 <ul>
@@ -677,7 +693,6 @@ filePath - the total path to the markdown file being rendered in this template
 <p>... y así continúa.</p>
 <p>Prueba tu programa en <code>viral_video.py</code>!</p>
 <h2 id="tasas-de-crecimiento-exponenciales">Tasas de crecimiento exponenciales.</h2>
-<p>This pattern of growth is called an <strong>exponential growth rate</strong> and is a mathematical function used to describe viral video viewcounts, money investments, spread of diseases, and more. Some examples:</p>
 <p>Este patrón de crecimiento se llama una <strong>Tasa de crecimiento exponencial.</strong> y es una función matemática que puede describir inversiones monetarias, las visitas de videos virales, o el crecimiento de enfermedades, por ejemplo:</p>
 <ul>
 <li>El crecimiento exponencial de una cuenta de ahorros buena es de mas o menos 1.01 por año.</li>
