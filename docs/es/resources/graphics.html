@@ -687,173 +687,179 @@ visible-after, to ensure they display when you want them to.
 </script>
 
 		<div class="container">
-			<h1 id="graphics-reference">Graphics Reference</h1>
+			<h1 id="referencia-graficas">Referencia Gráficas</h1>
 <hr />
 <div class="row">
     <div class="col-xs-12">
         <a class="btn btn-primary" role="button" data-toggle="collapse" href="#quickreference" aria-expanded="false" aria-controls="collapseExample">
-            Show/Hide Quick Reference
+            Mostrar/Ocultar Referencia Rápida
         </a>
         <a class="btn btn-primary" role="button" href="api-docs/graphics.html">
-            View Complete Reference Docs
+            Mirar al Referencia Completa
         </a>
     </div>
 </div>
 
 <p><br /></p>
 <div class="collapse" id="quickreference">
-    <h4>Create Graphical Objects</h4>
+    <h4>Crear objetos gráficos</h4>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <td>Method</td>
-                <td>Description</td>
+                <td>Métodos</td>
+                <td>Descripción</td>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><code>create_line(x1, y1, x2, y2)</code></td>
-                <td>Creates a new line connecting <code>(x1, y1)</code> and <code>(x2, y2)</code>.</td>
+                <td>Crea una nueva línea conectando
+ <code>(x1, y1)</code> y <code>(x2, y2)</code>.</td>
             </tr>
             <tr>
                 <td><code>create_rectangle(x1, y1, x2, y2)</code></td>
-                <td>Creates a new rectangle on the canvas the size of this bounding box and returns it.</td>
+                <td>Crea un nuevo rectángulo en el lienzo del tamaño del cuadro delimitador y lo retorna.</td>
             </tr>
             <tr>
                 <td><code>create_oval(x1, y1, x2, y2)</code></td>
-                <td>Creates a new oval on the canvas contained within this bounding box and returns it.</td>
+                <td>Crea un óvalo en el lienzo contenido dentro de su cuadro delimitador y lo retorna.</td>
             </tr>
             <tr>
                 <td><code>create_image(x, y, filepath)</code><br/><p>--OR--</p><code>create_image_with_size(x, y,<br /> width, height, filepath)</code></td>
-                <td>Creates a new image on the canvas from the specified file, with top-left corner at <code>(x, y)</code>.  You can also specify the width and height.</td>
+                <td>
+                Crea una nueva imagen en el lienzo del archivo especificado. La esquina superior izquierda se ubicará en el punto <code>(x, y)</code>. También puedes especificar la medida del ancho y alto de la imagen.
+                </td>
             </tr>
             <tr>
                 <td><code>create_text(x, y, text)</code></td>
-                <td>Creates text on the canvas with the specified contents, centered at <code>(x, y)</code>.</td>
+                <td>
+                Crea texto en el lienzo con los contenidos especificados. El texto estará centrado en el punto <code>(x, y)</code>.</td>
             </tr>
         </tbody>
     </table>
-    <h4>Work With Graphical Objects</h4>
+    <h4>Trabajar con objetos gráficos </h4>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <td>Method</td>
-                <td>Description</td>
+                <td>Métodos</td>
+                <td>Descripción</td>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><code>get_width(obj)</code></td>
-                <td>Returns the width of <code>obj</code>.</td>
+                <td>Retorna el ancho de <code>obj</code>.</td>
             </tr>
             <tr>
                 <td><code>get_height(obj)</code></td>
-                <td>Returns the height of <code>obj</code>.</td>
+                <td>Retorna la altura de <code>obj</code>.</td>
             </tr>
             <tr>
                 <td><code>get_left_x(obj)</code></td>
-                <td>Returns the leftmost x coordinate of <code>obj</code>.</td>
+                <td>Retorna la coordenada x máxima hacia la izquierda de <code>obj</code>.</td>
             </tr>
             <tr>
                 <td><code>get_top_y(obj)</code></td>
-                <td>Returns the topmost y coordinate of <code>obj</code>.</td>
+                <td>Retorna la coordenada y máxima que se encuentre en la parte superior de <code>obj</code>.</td>
             </tr>
             <tr>
                 <td><code>move(obj, dx, dy)</code></td>
-                <td>Moves <code>obj</code> using the displacements <code>dx</code> and <code>dy</code>.</td>
+                <td>Mueve <code>obj</code> usando los desplazamientos <code>dx</code> y <code>dy</code>.
             </tr>
             <tr>
                 <td><code>moveto(obj, x, y)</code></td>
-                <td>Sets the location of <code>obj</code> to the specified coordinates.</td>
+                <td>
+                Establece la ubicación de  <code>obj</code> a las coordinadas especificadas.</td>
             </tr>
             <tr>
                 <td><code>set_color(obj, color)</code></td>
-                <td>Sets the outline and fill color (if applicable) of <code>obj</code>.</td>
+                <td>Establece el contorno y llena el color (cuando sea aplicable) de <code>obj</code>.</td>
             </tr>
             <tr>
                 <td><code>set_font(obj, font, size)</code></td>
-                <td>Sets the font and font size for the text object <code>obj</code>.</td>
+                <td>Establece la fuente y tamaño de letra para el objeto de texto <code>obj</code>.</td>
             </tr>
             <tr>
                 <td><code>delete(obj)</code></td>
-                <td>Removes <code>obj</code> from the canvas.</td>
+                <td>Elimina <code>obj</code> del lienzo.</td>
             </tr>
         </tbody>
     </table>
-    <h4>Canvas Information</h4>
+    <h4>Información del lienzo</h4>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <td>Method</td>
-                <td>Description</td>
+                <td>Métodos</td>
+                <td>Descripción</td>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><code>get_canvas_width()</code></td>
-                <td>Returns the width of the canvas.</td>
+                <td>Retorna el ancho del lienzo.</td>
             </tr>
             <tr>
                 <td><code>get_canvas_height()</code></td>
-                <td>Returns the height of the canvas.</td>
+                <td>Retorna la altura del lienzo.</td>
             </tr>
         </tbody>
     </table>
     <hr />
 </div>
 
-<p>One of the most common libraries to create graphics in Python is called Tk (short for "tkinter"). Tk is a powerful graphics library that should be automatically installed for Windows and Mac along with Python when you installed it.  But some of the functions are hard to use.  For this reason, we provide our own small graphics library that is built on top of Tk and makes it easier to use.  However, it's not a replacement for Tk - it just adds new functions to make certain things like drawing text easier.  You can always explore the full Tk library if you're interested in seeing what else you can do!</p>
-<h2 id="importing">Importing</h2>
-<p>To use our graphics library, you must first import it at the top of your program, like this:</p>
+<p>​​Una de las librerías más comunes para hacer gráficas en Python se llama Tk (abreviatura de "tkinter"). Tk es una librería de gráficas muy poderosa que debería estar instalada por defecto para Windows y para Mac cuando se instala Python. Algunas de las funciones que incluye son difíciles de usar. Por esta razón, les suministramos nuestra propia mini versión de librería gráfica que está escrita encima de Tk y que es más fácil de usar. Sin embargo, no es un reemplazo para Tk - solo añade nuevas funciones para hacer ciertas acciones, como dibujar, más sencillas. ¡Siempre puedes explorar la librería completa de Tk si estás interesado en ver qué más hace!</p>
+<h2 id="importar-la-libreria">Importar la librería</h2>
+<p>Para utilizar nuestra librería gráfica primero debes importarla al comienzo de tu programa, así:</p>
 <pre><code>from graphics import Canvas
 </code></pre>
-<h2 id="the-canvas">The Canvas</h2>
-<p>The drawing model for the graphics library is a "canvas" (much like a painting) where you are going to draw various shapes. The canvas is a grid of pixels that have <code>x</code> and <code>y</code> values.  The coordinate (0, 0) is in the <strong>upper-left-hand corner</strong> of the canvas.  The values of <code>x</code> increase as you move to the right.  The values of <code>y</code> increase as you move down.  In other words, you can think of the canvas as follows:</p>
+<h2 id="el-lienzo">El Lienzo</h2>
+<p>El modelo gráfico para la librería de gráficas es un "lienzo" (como el de una pintura) donde vas a dibujar varias figuras. El lienzo es una cuadrícula de píxeles que tienen valores <code>x</code> y <code>y</code>. La coordenada (0,0) está en la <strong>esquina superior izquierda</strong> del lienzo. Los valores de <code>x</code> se incrementan a medida que te mueves hacia la derecha. Los valores de <code>y</code> se incrementan a medida que te mueves hacia abajo. En otras palabras, puedes imaginarte el lienzo como se muestra a continuación:</p>
 <p><img
   src="../../img/resources/graphics/canvas.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%;"
   alt="A diagram of the canvas coordinate scheme. (0, 0) is the top left corner. An arrow extends downwards in the y direction and rightwards in the x direction"
 /></p>
-<p>When we want to draw shapes on a canvas, we call functions on that canvas that “create” the shape we want to draw. These shapes then appear on the canvas. We will generally provide the code that creates the canvas for you, so all you need to worry about is adding shapes to that canvas. For the remainder of this handout, we will assume that a variable named <code>canvas</code> has already been created, and it represents the canvas that you’ll be drawing on. Usually this will be done with the following provided code:</p>
-<pre><code>canvas = Canvas()  # create a new canvas
-canvas.set_canvas_title(&quot;My Program&quot;)  # sets the text in the window title bar
+<p>Cuando queremos dibujar figuras en un lienzo, llamamos funciones sobre ese lienzo que "crean" la figura que queremos dibujar. Estas figuras luego aparecen en el lienzo. Generalmente vamos a darte el código para crear el lienzo por ti, entonces lo único por lo que te tienes que preocupar es por agregar figuras al lienzo. Para lo que queda de este documento, vamos a asumir que la variable llamada <code>canvas</code> ya ha sido creada y que representa el lienzo en el que vas a dibujar. Normalmente esto se hará con el siguiente código:</p>
+<pre><code>canvas = Canvas()  # crear un nuevo lienzo
+canvas.set_canvas_title(&quot;My Program&quot;)  # establece el texto como título de la ventana
 
-# now we can use our canvas here!
+# ¡Ahora podemos usar nuestro lienzo aquí!
 ...
 
-# call this at the end of the program to make sure the window shows properly
+# llama esto al final del programa para asegurarte de que la ventana se muestra correctamente
 canvas.mainloop()
 </code></pre>
-<p>Below we provide a brief tour of some of the different shapes you can draw in a canvas as well as highlight a few of the options you have with regard to how those shapes look.  For a complete list of functions, check out the link at the top of this page to the full reference documentation.</p>
-<h2 id="drawing-lines">Drawing Lines</h2>
-<p>To draw lines on the canvas, use <code>create_line</code> and specify the coordinates for the <strong>start</strong> and <strong>end</strong> points of the line.  For example, the following command would draw a line from location (10, 20) to (100, 50) on the canvas:</p>
+<p>A continuación encontrarás un pequeño tour por las diferentes figuras que puedes dibujar en el lienzo e igualmente resaltar algunas de las opciones que tienes respecto a cómo estas figuras se ven.
+Para una lista completa de instrucciones, mira el vínculo en la parte superior de esta página que lleva a la documentación completa.</p>
+<h2 id="dibujando-lineas">Dibujando líneas</h2>
+<p>Para dibujar líneas en el canvas, usa <code>create_line</code> y especifica las coordenadas para los puntos <strong>incial</strong> y <strong>final</strong> de la línea. Por ejemplo, el siguiente comando dibujaría una línea desde la coordenada (ubicación) (10,20) a la (100,50) en el lienzo:</p>
 <pre><code>canvas.create_line(10, 20, 100, 50)
 </code></pre>
-<p>By default, all lines are drawn black.</p>
-<h2 id="drawing-rectangles">Drawing Rectangles</h2>
-<p>To draw a rectangle on the canvas, use <code>create_rectangle</code> and specify the coordinates for the <strong>top left corner</strong> and <strong>bottom right corner</strong> of the rectangle.  For example, the following command would draw a rectangle with upper left-hand corner at (5, 50) and lower right-hand corner at (100, 200) on the canvas:</p>
+<p>Por defecto, todas las líneas serán negras.</p>
+<h2 id="dibujando-rectangulos">Dibujando Rectángulos</h2>
+<p>Para dibujar un rectángulo en el lienzo, usa <code>create_rectangle</code> y especifica las coordenadas para la <strong>esquina superior izquierda</strong> y la <strong>esquina inferior derecha</strong>. Por ejemplo, el siguiente comando dibujaría un rectángulo con la esquina superior izquierda en (5,50) y la esquina inferior derecha en (100,200) en el lienzo:</p>
 <pre><code>canvas.create_rectangle(5, 50, 100, 200)
 </code></pre>
-<p>By default, all rectangles are drawn unfilled with black outlines.  Here's what this code would draw on the canvas:</p>
+<p>Por defecto, todos los rectángulos son dibujados sin relleno y con borde negro. Esto es lo que el código dibujará en el lienzo:</p>
 <p><img
   src="../../img/resources/graphics/create_rectangle.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%; border: 1px solid black"
   alt="A diagram of a canvas with a rectangle whose upper-left corner is at (5, 50) and bottom right corner at (100, 200)"
 /></p>
-<h2 id="drawing-ovals">Drawing Ovals</h2>
-<p>To draw an oval on the canvas, use <code>create_oval</code> and specify the coordinates for the <strong>top left corner</strong> and <strong>bottom right corner</strong> of the bounding box containing the oval you would like to draw.  In other words, the oval drawn will have its top, bottom, right, and left just touching the sides of the bounding box you specify.  For example, the following command would draw the oval that fits within an imaginary rectangle with upper left-hand corner at (5, 50) and lower right-hand corner at (100, 200) on the canvas:</p>
+<h2 id="dibujando-ovalos">Dibujando óvalos</h2>
+<p>Para dibujar un óvalo en el lienzo, use <code>create_oval</code> y especifique las coordenadas para la <strong>esquina superior izquierda</strong> y <strong>esquina inferior derecha</strong> del cuadro delimitador que contiene el óvalo que desea dibujar. En otras palabras, la parte superior, inferior, derecha, e izquierda del óvalo dibujado tocarán los lados del cuadro delimitador especificado. Por ejemplo, el siguiente comando dibujaría el óvalo que cabe en un rectángulo imaginario con esquina superior izquierda en (5, 50) y esquina inferior derecha en (100, 200) en el lienzo:</p>
 <pre><code>canvas.create_oval(5, 50, 100, 200)
 </code></pre>
-<p>By default, all ovals are drawn unfilled with black outlines.  Here's what this code would draw on the canvas - note that we can think of this as an imaginary bounding box from (5, 50) to (100, 200), with an oval drawn inside it:</p>
+<p>Por defecto, todos los óvalos se dibujan sin llenar y con borde negro. A continuación, se presenta lo que el código anterior dibujaría en el lienzo - note que se podría pensar en esto como un cuadro imaginario desde (5, 50) hasta (100, 200) con un óvalo dibujado en su interior:</p>
 <p><img
   src="../../img/resources/graphics/create_oval.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%; border: 1px solid black"
-  alt="A diagram of a canvas with an oval whose bounding box upper-left corner is at (5, 50) and bounding box bottom right corner at (100, 200)"
+  alt="Un diagrama de un lienzo con un óvalo con un cuadro delimitador que tiene su esquina superior izquierda en (5, 50) y esquina inferior derecha en (100, 200)"
 /></p>
-<p>To make clear the notion of a bounding box, below we draw an oval and an outline rectangle, where both the oval and rectangle have the same bounding box coordinates:</p>
+<p>Para aclarar el concepto de un cuadro delimitador, debajo se dibujó un óvalo con un rectángulo de borde, donde tanto el óvalo como el rectángulo tienen las mismas coordenadas de cuadro delimitador:</p>
 <pre><code>canvas.create_rectangle(10, 50, 260, 200)
 canvas.create_oval(10, 50, 260, 200)
 </code></pre>
@@ -861,74 +867,77 @@ canvas.create_oval(10, 50, 260, 200)
   src="../../img/resources/graphics/create_oval_bounding_box.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%; border: 1px solid black"
-  alt="A diagram of a canvas with an oval whose bounding box upper-left corner is at (10, 50) and bounding box bottom right corner at (260, 200).  We also draw a rectangle for the bounding box itself from (10, 50) to (260, 200)"
+  alt="Un diagrama de un lienzo con un óvalo con un cuadro delimitador que tiene su esquina superior izquierda en (10, 50) y esquina inferior derecha en (260, 200). Además, hay un dibujo de un rectángulo para el cuadro delimitador de (10, 50) a (260, 200)"
 /></p>
-<h2 id="drawing-text">Drawing Text</h2>
-<p>To draw text on the canvas, use <code>create_text</code> and specify the coordinate for the <strong>center</strong> of the text label.  For example, the following command would add text to the canvas displaying "Hello, world!" <em>centered at</em> (50, 50):</p>
-<pre><code>canvas.create_text(50, 50, &quot;Hello, world!&quot;)
+<h2 id="dibujando-texto">Dibujando texto</h2>
+<p>Para dibujar texto en el lienzo, use ‘create_text’ y especifique la coordenada para el centro de la etiqueta de texto. Por ejemplo, el siguiente comando añadirá texto al lienzo mostrando “Hola, mundo!” centrado en (50,50)</p>
+<pre><code>canvas.create_text(50, 50, &quot;Hola, mundo!&quot;)
 </code></pre>
-<p>Note that while other graphical objects typically use their upper-left corner as their position, text uses its center point.  This is because often-times we wish to center text, such as in the middle of the screen.  We can do this easily using the dimensions of the canvas:</p>
+<p>Tenga en cuenta que mientras otros objetos gráficos suelen utilizar su esquina superior izquierda como posición, el texto utiliza su punto central.  Esto se debe a que a menudo deseamos centrar el texto, por ejemplo, en el centro de la pantalla.  Podemos hacerlo fácilmente utilizando las dimensiones del lienzo:</p>
 <pre><code>canvas.create_text(canvas.get_canvas_width() / 2,
                    canvas.get_canvas_height() / 2,
-                   &quot;This is centered on the canvas!&quot;)
+                   &quot;Esto está centrado en el lienzo!&quot;)
 </code></pre>
-<p>By default, all text is drawn in black in the system font.  Here's what this code for drawing a centered label would draw on the canvas:</p>
+<p>Por defecto, todo el texto es dibujado en negro en la fuente del sistema. Esto es lo que este código para dibujar una etiqueta de texto centrada dibujaría en el lienzo:</p>
 <p><img
   src="../../img/resources/graphics/create_text.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%; border: 1px solid black"
   alt="A diagram of a canvas with text drawn centered at (50, 50)"
 /></p>
-<p>If you'd like, you can change the font of drawn text using <code>set_font</code>, like this:</p>
-<pre><code>label = canvas.create_text(100, 100, &quot;Hello, world!&quot;)
+<p>Si lo desea, puedes cambiar el tipo de fuente del texto usando set_font, como se muestra a continuación:</p>
+<pre><code>label = canvas.create_text(100, 100, &quot;Hola, mundo!&quot;)
 canvas.set_font(label, &quot;Times&quot;, 25)
 </code></pre>
-<h2 id="adding-images">Adding Images</h2>
-<p class="alert alert-info"><em>Note: if images do not work in your program, and instead give an error, you may not have installed the library necessary for images to work.  Make sure you followed the instructions in the <a href="../../en/resources/install.html">installation guide</a> under "Installing Graphics".</em></p>
-<p>You can add image files to your canvas as well.  To do this, use <code>create_image</code> (if you want the image to be the same size on the canvas as the image file) or <code>create_image_with_size</code>) (if you want the image to be another size you specify).  Both require you to specify the x and y location of the <strong>upper-left corner</strong> of the image on the canvas, as well as the name of the image file.  <code>create_image_with_size</code> also requires a width and a height that the image should be.  Here's an example that adds a smiley-face image to the canvas with upper-left corner at (25, 30), assuming we have an image file named "smiley.jpg" in our PyCharm project:</p>
+<h2 id="anadir-imagenes">Añadir imágenes</h2>
+<p class="alert alert-info"><em>Nota: Si las imágenes no funcionan en tu programa y no aparece ningún error, es posible que no tenga instalada la librería necesaria para que las fotos funcionen.
+De ser así asegúrese de seguir las siguientes instrucciones: (../../en/resources/install.html) en la sección “Installing Graphics”</em></p>
+<p>Puede añadir imágenes a tu lienzo. Para hacerlo debe usar create_image (si quiere que la imagen tenga la misma resolución que el archivo) de lo contrario debe usar create_image_with_size para especificar el tamaño de la imagen.
+Independientemente de la función usada debe especificar la posición en x y y de la esquina superior izquierda de la imagen para insertarla en el lienzo y el nombre de la imagen. Adicionalmente create_image_with_size necesita el alto y el ancho que tomará la imagen.
+A continuación, se muestra un ejemplo que añade una imagen de una “carita feliz” con la esquina superior derecha en las coordenadas (25, 30) y asumiendo que tenemos un archivo llamado “smiley.png” en nuestra carpeta del proyecto de PyCharm:</p>
 <pre><code>canvas.create_image(25, 30, &quot;smiley.png&quot;)
 
 # or add with specific dimensions width = 100, height = 200
 canvas.create_image_with_size(25, 30, 100, 200, &quot;smiley.png&quot;)
 </code></pre>
-<p>Here's what this code would draw on the canvas - note that the larger smiley is the one from the <code>create_image</code> call, and the distorted one is the 100x200 smiley drawn with <code>create_image_with_size</code>:</p>
+<p>Este es el resultado que el código anterior dibujaría en el lienzo. Nótese que la carita feliz más grande es la insertada con la función create_image y la imagen distorsionada es la que tiene tamaño 100x200 y fue insertada con la función create_image_with_size.</p>
 <p><img
   src="../../img/resources/graphics/create_image.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%; border: 1px solid black"
   alt="A diagram of a canvas with a full-size smiley drawn at (25, 30) and a smiley that is 100x200 drawn at (25, 30)"
 /></p>
-<p>One note about images is that they <em>cannot be resized after you create them</em>.  (Note: smiley image from <a href="https://simple.wikipedia.org/wiki/Smiley">here</a>)</p>
-<h2 id="removing-objects-from-the-canvas">Removing Objects From the Canvas</h2>
-<p>You can remove objects from the canvas using <code>delete</code>:</p>
+<p>Cabe resaltar que las imágenes no pueden cambiar de tamaño después de haber sido creadas.  Imagen de “Smiley” recuperada de https://simple.wikipedia.org/wiki/Smiley</p>
+<h2 id="remover-objetos-de-los-lienzos">Remover objetos de los lienzos</h2>
+<p>Puedes remover objetos de los lienzos usando delete:</p>
 <pre><code>rect = canvas.create_rectangle(100, 200, 300, 400)
 ...
 canvas.delete(rect)
 </code></pre>
-<p>Note that deleting an object is permanent - if you want to temporarily make an object hidden, for instance, use <code>set_hidden</code>.  You can pass in either <code>True</code> or <code>False</code> to set an object to be hidden or visible:</p>
+<p>Note que se borra un objeto permanentemente - si quiere que un objeto se oculte temporalmente es mejor utilizar la función <code>set_hidden</code>. Puede pasar como parámetro el valor de <code>True</code> (verdadero) o <code>False</code> (falso) para ocultar o hacer visible un objeto respectivamente.</p>
 <pre><code>rect = canvas.create_rectangle(100, 200, 300, 400)
-canvas.set_hidden(rect, True)  # No longer visible
+canvas.set_hidden(rect, True)  # No es visible
 ...
-canvas.set_hidden(rect, False) # visible again
+canvas.set_hidden(rect, False) #Es visible
 </code></pre>
-<h2 id="object-ordering">Object Ordering</h2>
-<p>Objects are drawn on the canvas in the order in which they are created by your code. So, if you draw a red rectangle after a yellow circle, the red rectangle can potentially cover (occlude) part of the yellow circle. This is sometimes referred to as the z-order of the objects.</p>
-<p>As an example, below, we first draw a yellow rectangle, then draw an orange oval (which partly overlaps the rectangle), and then some text (that is on top of both the rectangle and the oval).</p>
+<h2 id="orden-de-objetos">Orden de Objetos</h2>
+<p>Los objetos se dibujan en el canvas en el orden en que fueron creados por su código. Entonces, si dibuja un rectángulo rojo después de un círculo amarillo, el rectángulo rojo puede potencialmente cubrir (ocluir) parte del círculo amarillo. Esto a veces se denomina el orden z de los objetos.</p>
+<p>Como ejemplo, primero dibujamos un rectángulo amarillo, luego dibujamos un óvalo naranja (que se superpone parcialmente al rectángulo) y luego algo de texto (que está encima del rectángulo y el óvalo).</p>
 <pre><code>rect = canvas.create_rectangle(10, 50, 150, 200)
 canvas.set_fill_color(rect, 'yellow')
 oval = canvas.create_oval(100, 100, 200, 220)
 canvas.set_fill_color(oval, 'orange')
-label = canvas.create_text(70, 170, 'good times!')
+label = canvas.create_text(70, 170, '¡Buenos tiempos!')
 canvas.set_font(label, &quot;Times&quot;, 20)
 </code></pre>
 <p><img
   src="../../img/resources/graphics/z_order.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%; border: 1px solid black"
-  alt="A diagram of a canvas with a yellow rectangle, orange oval, and black text saying 'good times!'.  The rectangle is drawn first, so it is behind the other objects.  The orange oval partially overlaps on top of the rectangle, and the text is added last so it appears on top of both the rectangle and oval."
+  alt="Un diagrama de un canvas con un rectángulo amarillo, un óvalo naranja y un texto negro que dice "¡buenos tiempos!". El rectángulo se dibuja primero, por lo que está detrás de los otros objetos. El óvalo naranja se superpone parcialmente en la parte superior del rectángulo y el texto se agrega al final para que aparezca encima del rectángulo y del óvalo."
 /></p>
-<h2 id="getting-object-information">Getting Object Information</h2>
-<p>For all graphical objects, you can ask the canvas for information about them.  For instance, you can get their dimensions via <code>get_width</code> and <code>get_height</code>:</p>
+<h2 id="obteniendo-la-informacion-del-objeto">Obteniendo la información del objeto</h2>
+<p>Para todos los objetos gráficos, puede solicitar al canvas información sobre ellos. Por ejemplo, puedes obtener sus dimensiones a través de ‘get_width’ y ‘get_height’:</p>
 <pre><code>rect = canvas.create_rectangle(0, 0, 50, 100)
 print(canvas.get_width(rect))  # prints 50
 print(canvas.get_height(rect)) # prints 100
@@ -938,45 +947,45 @@ print(canvas.get_height(rect)) # prints 100
 print(canvas.get_left_x(oval))  # prints 5
 print(canvas.get_top_y(oval))   # prints 10
 </code></pre>
-<p>Note that for something like an oval, the dimensions and left corner are from the bounding box that contains it.</p>
-<h2 id="updating-graphical-objects">Updating Graphical Objects</h2>
-<p>There are several helpful functions you can use to update the state of different graphical objects.</p>
-<h4 id="moving-objects">Moving Objects</h4>
-<p>You can change the location of an object using <code>moveto</code>.  You specify a new coordinate which will be the upper-left corner of the bounding box for the object (e.g. bounding box for an oval, bounding box for a line, etc.).  Here's how we would move a rect to have upper-left corner at (25, 50):</p>
+<p>Note que para un objeto como un óvalo, los parámetros de las dimensiones y la esquina izquierda de referencia son del rectángulo que contiene dicho óvalo.</p>
+<h2 id="actualizando-objetos-graficos">Actualizando Objetos Gráficos</h2>
+<p>Existen varias funciones útiles para actualizar el estado de diferentes objetos gráficos.</p>
+<h4 id="moviendo-objetos">Moviendo Objetos</h4>
+<p>Puede cambiar la posición de un objeto utilizando la función <code>moveto</code>. Se especifican las nuevas coordenadas de la esquina superior izquierda del contenedor del objeto (ej.: el contenedor para un óvalo, el contenedor para una línea, etc.). A continuación, se muestra como se puede mover un rectángulo a la posición (25, 50) tomando como punto de referencia su esquina superior izquierda.</p>
 <pre><code>rect = canvas.create_rectangle(100, 200, 300, 400)
 canvas.moveto(rect, 25, 50)
 </code></pre>
-<p>You can also change the location of an object by specifying <em>how much</em> you would like to move it by, instead of specifying the new location.  The <code>move</code> function lets you specify the change in <code>x</code> and the change in <code>y</code> for the object.  For example, here's how we would move a rect 5 pixels to the right, and 10 pixels down:</p>
+<p>También se puede cambiar la posición de un objeto especificando <em>que tanto</em> desea que se mueva el objeto en vez de decir cual es su nueva posición. La función <code>move</code> le permite especificar el cambio en <code>x</code> y el cambio en <code>y</code> del objeto. Por ejemplo, a continuación se muestra como se puede mover un rectángulo 5 píxeles hacia la derecha y 10 píxeles hacia abajo:</p>
 <pre><code>rect = canvas.create_rectangle(100, 200, 300, 400)
 canvas.move(rect, 5, 10)
 </code></pre>
-<p>Thus, <code>rect</code>'s new top-left-corner coordinate would be (105, 210).</p>
-<h4 id="coloring">Coloring</h4>
+<p>Por lo tanto, la nueva coordenada de la referencia superior izquierda del rectángulo será (105, 210).</p>
+<h4 id="coloreado">Coloreado</h4>
 <p>You can change the colors of various objects, both their <em>outline</em> and their <em>fill</em>.  Objects like rectangles and ovals have both - their outline is the border around the shape, and their fill is the inside of the shape.  Lines have just a fill - it's the color of the line.  Text also has just a fill - it's the color of the text.  Images have neither a fill nor an outline.  You can change the fill color for relevant objects using <code>set_fill_color</code>, and the outline color using <code>set_outline_color</code>.  For instance, here's how we could make a rectangle with a red outline and yellow fill:</p>
 <pre><code>rect = canvas.create_rectangle(5, 5, 100, 100)
 canvas.set_outline_color(rect, 'red')
 canvas.set_fill_color(rect, 'yellow')
 </code></pre>
-<p>Here's what this would look like on the canvas:</p>
+<p>Así es como se debería ver dentro del lienzo (canvas):</p>
 <p><img
   src="../../img/resources/graphics/coloring.png"
   class="img-fluid mx-auto d-block"
   style="width: 30%; border: 1px solid black"
   alt="A diagram of a canvas with a rectangle from (5, 5) to (100, 100) drawn with a yellow fill and red outline"
 /></p>
-<p>If you pass in the empty string for the color, it sets the shape to have no fill or outline:</p>
+<p>Si pasas un ‘string’ vacío para el parámetro del color, creará una forma que no tenga ningún relleno ni ningún borde.</p>
 <pre><code>rect = canvas.create_rectangle(100, 200, 300, 400)
 canvas.set_outline_color(rect, '')    # no outline
 canvas.set_fill_color(rect, 'yellow') # yellow fill
 </code></pre>
-<p>Oftentimes we want to set both colors at the same time.  For this, we can use <code>set_color</code>.  This sets both the outline color and the fill color of a shape to a specified color.  You can even use it on shapes that don't have one of those - for instance, text has just a fill color, but you can use <code>set_color</code> to set its color anyway.  Therefore, most of the time, <code>set_color</code> is just what we need.  If you need more specificity in setting the outline color or fill color, however, you can use <code>set_outline_color</code> or <code>set_fill_color</code>.</p>
-<p>There are a ton of different colors available to use - for a complete list, <a href="https://www.tcl.tk/man/tcl8.6/TkCmd/colors.htm">check out this website</a>.</p>
-<h2 id="canvas-information">Canvas Information</h2>
-<p>You can get the width and height of the canvas itself using <code>get_canvas_width</code> and <code>get_canvas_height</code>:</p>
+<p>Frecuentemente queremos establecer ambos colores al mismo tiempo. Para esto, podemos utilizar <code>set_color</code>. Esto establece tanto el relleno como el borde de la figura al color especificado. Incluso puedes usar <code>set_color</code>para figuras que no tienen ninguno de esos - por ejemplo, el texto solo tiene color de relleno, pero puedes utilizar <code>set_color</code> igualmente. Por lo tanto, la mayoría del tiempo <code>set_color</code> es todo lo que necesitas. Sin embargo, si necesitas ser más específico, puedes usar <code>set_outline_color</code> (el borde) o <code>set_fill_color</code> (el relleno).</p>
+<p>Hay muchos colores diferentes disponibles - para una lista completa, [mira esta página] (https://www.tcl.tk/man/tcl8.6/TkCmd/colors.htm)</p>
+<h2 id="informacion-del-canvas">Información del Canvas</h2>
+<p>Puedes obtener el largo y el ancho del canvas en sí utilizando <code>get_canvas_width</code> (ancho) y <code>get_canvas_height</code>(largo):</p>
 <pre><code>canvas_width = canvas.get_canvas_width()
 canvas_height = canvas.get_canvas_height()
 
-# Create centered text
+# Crear texto centrado
 label = canvas.create_text(canvas_width / 2, canvas_height / 2, &quot;I'm centered!&quot;)
 </code></pre>
 
