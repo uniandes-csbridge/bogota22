@@ -406,6 +406,36 @@ visible-after, to ensure they display when you want them to.
 							</li>
 			</ul>
 		</li>
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022070411"
+		>
+			<a tabindex="-1" href="#">4: Los Programas Interactivos</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070411"
+						>
+							Listas
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022070411"
+							>
+								<a href="../../es/projects/sorted.html">Números ordenados</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070411"
+							>
+								<a href="../../es/projects/snow.html">Nieve</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070411"
+							>
+								<a href="../../es/projects/breakout.html">Breakout (Hito 1)</a>
+							</li>
+			</ul>
+		</li>
 </ul>					</li>
 
 					<!-- Examples dropdown -->
@@ -569,6 +599,21 @@ visible-after, to ensure they display when you want them to.
 							>
 								<a href="../../es/projects/gravityBall/">Gravedad Ball</a>
 							</li>
+			</ul>
+		</li>
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022070411"
+		>
+			<a tabindex="-1" href="#">4: Los Programas Interactivos</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070411"
+						>
+							Listas
+						</li>
+
 			</ul>
 		</li>
 </ul>					</li>
@@ -776,47 +821,47 @@ filePath - the total path to the markdown file being rendered in this template
 Worked Example: <a href="../../en/projects/stamptool/">Stamp Tool</a><br/>
 Project: <a href="../../en/projects/bouncingBall.html">Bouncing Ball</a><br/>
 File: <code>breakout.py</code></p>
-<p>Your job in this assignment is to write the classic arcade game of Breakout, which was invented by Steve Wozniak before he founded Apple with Steve Jobs (moment of silence).  It is a large assignment, but entirely manageable as long as you break the problem up into pieces.</p>
-<h2 id="the-breakout-game">The Breakout Game</h2>
-<p>In Breakout, the initial configuration of the world appears as shown below. The colored rectangles in the top part of the screen are <strong>bricks</strong>, and the slightly larger rectangle at the bottom is the <strong>paddle</strong>. The paddle is in a fixed position in the vertical dimension, but moves back and forth across the screen along with the mouse until it reaches the edge of its space.</p>
+<p>Tu trabajo en este ejercicio es desarrollar el juego clásico de arcade Breakout, que fue inventado por Steve Wozniak antes de fundar Apple con Steve Jobs (un minuto de silencio). Es una tarea grande, pero es manejable desde que dividas el problema en partes.</p>
+<h2 id="el-juego-breakout">El juego Breakout</h2>
+<p>En Breakout, la configuración inicial del mundo aparece como se muestra a continuación. Los rectángulos de colores en la parte superior de la pantalla son <strong>ladrillos</strong>, y el rectángulo más grande de la parte inferior es la <strong>raqueta</strong>. La raqueta está fijada en la dimensión vertical, pero se mueve hacia adelante y hacia atrás en la pantalla junto con el mouse hasta que llega al final de su espacio.</p>
 <p><center><img style="padding:10px;max-width:100%" src="../../img/projects/breakout/breakoutGameH.png" /></center></p>
-<p>A complete game consists of three turns. On each turn, a ball is launched from the center of the window toward the bottom of the screen at a random angle. That ball bounces off the paddle and the walls of the world, in accordance with the physical principle generally expressed as "the angle of incidence equals the angle of reflection" (which turns out to be very easy to implement as discussed later in this handout). Thus, after two bounces--one off the paddle and one off the right wall--the ball might have the trajectory shown in the second diagram. (Note that the dotted line is there to show the ball's path and won't appear on the screen.)</p>
-<p>As you can see from the second stage of the above diagram, the ball is about to collide with one of the bricks on the bottom row.  When that happens, the ball bounces just as it does on any other collision, but the brick disappears.  The third diagram shows what the game looks like after that collision and after the player has moved the paddle to put it in line with the oncoming ball.</p>
-<p>The play on a turn continues in this way until one of two conditions occurs:</p>
+<p>Un juego completo consiste de tres turnos. En cada turno, una bola es lanzada desde el centro de la pantalla hacia la parte inferior en un ángulo al azar. La pelota rebota en la raqueta y en las paredes del mundo, de acuerdo con el principio físico expresado como "el ángulo de incidencia es igual al ángulo de reflexión" (que resulta muy fácil de implementar, como se discutirá más adelante). De esta manera, después de que rebote dos veces--una vez en la raqueta y una en la pared--la bola podría tener una trayectoria como la mostrada en el segundo diagrama. (Nota que la línea punteada se creó para mostrar el camino de la pelota y no aparecerá en la pantalla.)</p>
+<p>Como puedes verlo en la segunda parte del diagrama superior, la bola está a punto de chocar con uno de los ladrillos de la fila de abajo. Cuando eso pasa, la bola rebota igual que en cualquier otra colisión, pero el ladrillo desaparece. El tercer diagrama muestra cómo se ve el juego después de esa colisión y después de que el jugador ha movido la raqueta para alinearse con la bola que se acerca.</p>
+<p>El juego en un turno continúa de esta manera hasta que alguna de las siguientes condiciones ocurre:</p>
 <ol>
-<li>The ball hits the lower wall, which means that the player must have missed it with the paddle.  In this case, the turn ends and the next ball is served if the player has any turns left.  If not, the game ends in a loss for the player.</li>
-<li>The last brick is eliminated.  In this case, the player wins, and the game ends immediately.</li>
+<li>La bola golpea la pared inferior, lo que significa que el jugador no alineó bien la raqueta con la bola. En este caso, el turno termina y la siguiente bola es lanzada si el jugador aún tiene turnos. Si no tiene turnos, el juego termina y el jugador pierde.</li>
+<li>El último ladrillo es eliminado. En este caso, el jugador gana, y el juego termina.</li>
 </ol>
-<p>Success in this assignment will depend on breaking up the problem into manageable pieces and getting each one working before you move on to the next.  The next few sections describe a reasonable staged approach to the problem.</p>
-<h2 id="demo">Demo</h2>
+<p>Para tener éxito en esta tarea el problema debe dividirse en partes más pequeñas y lograr que cada una funcione antes de pasar a la siguiente. Las siguientes secciones describen un enfoque del problema por etapas.</p>
+<h2 id="demo-haga-clic-para-comenzar">Demo (haga clic para comenzar)</h2>
 <div class="row">
     <div class="col-md-12">
         <iframe style="width: 410px; height: 650px; border: none;" id="canvas" src="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1164/assignments/Assignment3/Breakout/"></iframe>
     </div>
 </div>
 
-<h2 id="1-create-bricks">1. Create Bricks</h2>
-<p>Before you start playing the game, you have to set up the various pieces.  Thus, it probably makes sense to implement the <code>main</code> function as several smaller functions, each doing one piece of the game.  An important part of the setup consists of creating the rows of bricks at the top of the game, which look like this:</p>
+<h2 id="1-crear-ladrillos">1. Crear Ladrillos</h2>
+<p>Antes de comenzar a jugar, es necesario colocar las diferentes piezas que conforman el juego. Por esta razón, tiene sentido que la función <code>main</code>  esté compuesta por varias funciones más pequeñas, cada una creando una parte del juego. Una parte importante de la configuración consiste en crear las filas de ladrillos en la parte superior del juego, que se ven así:</p>
 <p><center>
 <img style="padding:10px;max-width:100%" src="../../img/projects/breakout/breakoutBricks.png"></img>
 </center></p>
-<p>The number, dimensions, and spacing of the bricks are specified using named constants in the starter file, as is the distance from the top of the window to the first line of bricks.  The only value you need to compute is the x coordinate of the first column, which should be chosen so that the bricks are centered in the window, with the leftover space divided equally on the left and right sides.  The color of the bricks remain constant for two rows and run in the following rainbow-like sequence: <code>"red", "orange", "yellow", "green", "cyan"</code>.</p>
-<h2 id="2-add-a-bouncing-ball">2. Add a bouncing ball</h2>
-<p>At one level, creating the ball is easy, given that it's just a filled oval.  The interesting part lies in getting it to move and bounce appropriately.  You are now past the "setup" phase and into the "play" phase of the game.  To start, create a ball and put it in the center of the window.  As you do so, keep in mind that the coordinates of the oval do not specify the location of the center of the ball but rather its upper left corner.</p>
-<p>The program needs to keep track of the velocity of the ball, which consists of two separate components, which you will presumably declare as variables like this:</p>
-<pre><code>change_x = 10
-change_y = 10
+<p>El número, las dimensiones y el espaciado de los ladrillos se especifican mediante constantes con nombre en el archivo de inicio, al igual que la distancia desde la parte superior de la ventana hasta la primera línea de ladrillos.  El único valor que necesita calcular es la coordenada x de la primera columna, que debe ser elegida para que los ladrillos estén centrados en la ventana, con el espacio sobrante dividido por igual en los lados izquierdo y derecho.  El color de los ladrillos se mantiene constante durante dos filas y se ejecuta en la siguiente secuencia tipo arco iris: <code>"red", "orange", "yellow", "green", "cyan"</code>.</p>
+<h2 id="2-agregar-la-bola-que-rebota">2. Agregar la bola que rebota</h2>
+<p>En un nivel, crear una bola es sencillo, dado que es solo un óvalo relleno. La parte interesante es lograr hacerla mover y rebotar correctamente. Ahora superaste la fase de "configuración" y ya estás en la fase "jugar" del juego. Para comenzar, crea una bola y ponla en el centro de la ventana. Cuando lo hagas, recuerda que las coordenadas del óvalo no especifican la posición del centro de la bola, sino su esquina superior izquierda.</p>
+<p>El programa debe tener en cuenta la velocidad de la bola, la cual consiste en dos componentes aparte, las cuales declararemos como variables así:</p>
+<pre><code>cambio_x = 10
+cambio_y = 10
 </code></pre>
-<p>The "change" components represent the change in position that occurs on each time step.  Initially, the ball should be heading downward, and you should pick random initial values for <code>change_x</code> and <code>change_y</code>.</p>
-<p>Recall that there are two ways to move an object in the Python graphics library:</p>
-<pre><code># Move to the object to a specific new_x, new_y
-canvas.moveto(object, new_x, new_y)
+<p>Las componentes "cambio" representan el cambio en la posición que ocurre en cada intervalo de tiempo. Inicialmente, la bola debería desplazarse hacia abajo, y deberías escoger valores aleatorios iniciales para <code>cambio_x</code> y <code>cambio_y</code>.</p>
+<p>Recuerda que hay dos maneras de mover un objeto en la librería de gráficos de Python:</p>
+<pre><code># Mover el objeto a una coordenada específica nuevo_x, nuevo_y
+canvas.moveto(objecto, nuevo_x, nuevo_y)
 
-# Increase the x coordinate by change_x and the y coordinate by change_y
-canvas.move(object, change_x, change_y)
+# Incrementar la coordenada x por un cambio_x y la coordenada y por un cambio_y
+canvas.move(objecto, cambio_x, cambio_y)
 </code></pre>
-<p>Once you've created your ball and the change variables, your next challenge is to get the ball to bounce around the world, ignoring entirely the paddle and the bricks.  This will require that you program an "animation loop" where you move the ball, update the canvas and then pause. Then you can consider how to make the ball bounce. To do so, you need to check to see if the coordinates of the ball have gone beyond the boundary, taking into account that the ball has a nonzero size.  Thus, to see if the ball has bounced off the right wall, you need to see whether the coordinate of the right edge of the ball has become greater than the width of the window; the other three directions are treated similarly.  For now, have the ball bounce off the bottom wall so that you can watch it make its path around the world.</p>
-<p>Computing what happens after a bounce is extremely simple.  If a ball bounces off the top or bottom wall, all you need to do is reverse the sign of <code>change_y</code>.  Symmetrically, bounces off the side walls simply reverse the sign of <code>change_x</code>.  Something that might be helpful is to make a function that handles the bouncing and changing of <code>change_x</code> and <code>change_y</code> and returns the new values of <code>change_x</code> and <code>change_y</code>.  You can have a function that returns more than one value:</p>
+<p>Una vez hayas creado tu bola y tus variables de cambio, tu siguiente reto es lograr que la bola rebote, ignorando completamente la raqueta y los ladrillos. Esto va a requerir que programes un "bucle de animación" donde mueves la bola, actualices el lienzo y luego pauses. Luego puedes considerar cómo hacer que la bola rebote. Para hacerlo, debes verificar si las coordenadas de la bola han ido más allá del límite de la ventana, teniendo en cuenta que la bola tiene un tamaño mayor a cero. Por tanto, para ver si la bola ha rebotado de la pared de la derecha, debes ver si la coordenada del lado derecho de la bola se ha vuelto mayor que el ancho de la ventana; las otras tres direcciones se tratan de manera similar. Por ahora, haz que la bola rebote de la pared de abajo para que la veas tomar su camino alrededor de la ventana.</p>
+<p>Programar lo que pasa después de un rebote es muy sencillo. Si una bola rebota de la pared superior o inferior, lo único que necesitas hacer es cambiar el signo de <code>cambio_y</code>. Por simetría, si la bola rebota de las paredes de los lados, simplemente cambia el signo de <code>cambio_x</code>. Algo que puede ser útil es hacer una función que se encargue de controlar los rebotes y el cambio de <code>cambio_x</code> y <code>cambio_y</code> y retorne los nuevos valores de <code>cambio_x</code> y <code>cambio_y</code>. Puedes tener una función que retorne más de un valor:</p>
 <pre><code>x, y = my_func(...)
 
 ...
@@ -825,75 +870,80 @@ def my_func(...):
     ...
     return var1, var2
 </code></pre>
-<h2 id="3-add-the-paddle">3. Add the paddle</h2>
-<p>The next step is to create the paddle.  There is only one paddle, which is a filled rectangle.  You even know its position relative to the bottom of the window.</p>
-<p>The challenge in creating the paddle is to make it track the mouse. Here, however, you only have to pay attention to the x coordinate of the mouse because the y position of the paddle is fixed.</p>
-<p>Each time through the animation loop, ask for the location of the mouse and move the rectangle representing the paddle. To get the location of the mouse, you can use the canvas function <code>canvas.get_mouse_x()</code>:</p>
+<h2 id="3-a-agrega-la-raqueta">3. A Agrega la raqueta</h2>
+<p>El siguiente paso es crear la raqueta. Solo hay una raqueta, que es un rectángulo relleno. Incluso conoces su posición en relación con la parte inferior de la ventana.</p>
+<p>El desafío de crear la raqueta es hacer que siga al ratón del computador. Aquí, sin embargo, solo debes prestar atención a la coordenada x del ratón porque la posición y de la raqueta es fija.</p>
+<p>Cada vez que pase por el ciclo de animación, solicita la ubicación del ratón y mueve el rectángulo que representa la raqueta. Para obtener la ubicación del ratón, puedes usar la función del lienzo <code>canvas.get_mouse_x()</code>:</p>
 <pre><code>mouse_x = canvas.get_mouse_x()
 </code></pre>
-<h2 id="4-check-for-collisions">4. Check for Collisions</h2>
-<p>Now comes the interesting part.  In order to make Breakout into a real game, you have to be able to tell whether the ball is colliding with another object in the window.  There is a canvas function: <code>canvas.find_overlapping(x_1, y_1, x_2, y_2)</code>, which returns a list of all objects that are overlapping the rectangle with upper-left corner at <code>(x_1, y_1)</code> and bottom-right corner at <code>(x_2, y_2)</code>.</p>
+<h2 id="4-comprobar-si-hay-colisiones">4. Comprobar si hay colisiones</h2>
+<p>Ahora viene la parte interesante. Para convertir Breakout en un juego real, debes saber si la pelota está chocando con otro objeto en la ventana. Hay una función del lienzo: <code>canvas.find_overlapping(x_1, y_1, x_2, y_2)</code>, que devuelve una lista de todos los objetos que se superponen al rectángulo con la esquina superior izquierda en <code>(x_1, y_1)</code> y la parte inferior derecha esquina en <code>(x_2, y_2)</code>.</p>
 <pre><code>colliders = canvas.find_overlapping(x_1, y_1, x_2, y_2)
 </code></pre>
-<p>The easiest thing to do, which is in fact typical of real computer games, is to check a larger bounding box for collision. Look for any objects in this rectangle:</p>
+<p>Lo más sencillo para hacer esto, que de hecho es típico de los juegos de computadora reales, es marcar un cuadro delimitador más grande para detectar colisiones. Busca cualquier objeto en este rectángulo:</p>
 <p><center>
   <img src="../../img/projects/breakout/breakoutCollision.png"></img>
 </center></p>
-<p>To get a list of objects that are overlapping the ball, you can use code as follows which calls the canvas function <code>canvas.coords(obj)</code>, returning the coordinates of the top-left and bottom-right of the object.</p>
-<pre><code># this graphics function gets the location of the ball as a list
+<p>Para obtener una lista de los objetos que están chocando con la pelota puedes usar el siguiente código, que llama la función <code>canvas.coords(obj)</code> del lienzo y retorna las coordenadas de la esquina superior izquierda y la esquina inferior derecha del objeto.</p>
+<pre><code># esta función retorna la ubicación de la pelota como una lista
 ball_coords = canvas.coords(ball)
 
-# the list has the coordinates for two points
+# la lista tiene las coordenadas de dos puntos
 x_1 = ball_coords[0]
 y_1 = ball_coords[1]
 x_2 = ball_coords[2]
 y_2 = ball_coords[3]
 
-# we can then get a list of all objects in that area
+# después podemos obtener una lista de todos los objetos que están chocando la pelota
 colliding_list = canvas.find_overlapping(x_1, y_1, x_2, y_2)
 </code></pre>
-<p>If you get all overlapping objects in this rectangle, you will be returned a list. In that list will be the <code>ball</code> itself (since the ball overlaps too!), as well as any objects that the ball is currently colliding with. To test if a colliding object is the ball, you can simply check if the element is <code>==</code> to your ball variable.</p>
-<p>If the ball collides with the paddle, you need to bounce the ball so that it starts traveling up.  If it isn't the paddle, the only other thing it might be is a brick, since those are the only other objects in the world.  Once again, you need to cause a bounce in the vertical direction (flip the direction of the <code>change_y</code> variable), but you also need to take the brick away.  To do so, all you need to do is remove it from the screen by calling the <code>delete</code> function:</p>
-<pre><code>canvas.delete(square)  # deletes the object called square
+<p>Cuando obtienes una lista de los objetos que chocan con la pelota usando <code>canvas.find_overlapping(x_1, y_1, x_2, y_2)</code> verás que la pelota misma estará contenida en esta lista. Así como los demás objetos con los que la pelota esté en contacto. Si quieres probar si un objeto que está en contacto con la pelota es la pelota misma, puedes simplemente mirar si el objeto es <code>==</code> a tu variable de pelota.</p>
+<p>Si la pelota choca con la raqueta, necesitas hacer que esta rebote para que empiece a viajar hacia arriba. Si no está chocando con la raqueta, el único otro objeto con el que puede estar en contacto es un ladrillo. Dado que esos son los únicos dos objetos que existen dentro de nuestro mundo de Breakout. Una vez más, deberás hacer que la pelota rebote verticalmente (cambia la dirección de la variable <code>change_y</code>), pero también deberás lograr quitar el ladrillo de nuestro conjunto de ladrillos. Para lograr esta tarea, lo único que debes hacer es eliminarlo de la pantalla llamando la función <code>delete</code> (eliminar en inglés):</p>
+<pre><code>canvas.delete(square)  # elimina el objeto llamado square
 </code></pre>
-<p>The ball should collide with just one object (e.g. paddle, brick) per animation cycle.  In other words, as soon as you find out that the ball collided with the paddle or with a brick, you should respond to that collision and ignore the rest if it also collided e.g. with other bricks simultaneously.</p>
-<h2 id="5-finishing-touches">5. Finishing Touches</h2>
-<p>If you've gotten to here, you've done all the hard parts.  There are, however, a few more details you should take into account.</p>
+<p>La bola debe golpear únicamente uno de los objetos (Ej. La raqueta, los ladrillos) por ciclo de animación. En otras palabras, en el momento en el que detectamos que la bola golpea algún objeto únicamente se debe tener en cuenta ese evento e ignorar las demás (Esto se da especialmente si golpea varios ladrillos al mismo tiempo).</p>
+<h2 id="5-toques-finales">5. Toques finales</h2>
+<p>Si has llegado hasta aquí ya lograste todas las partes difíciles, sin embargo, aun quedan un par de detalles que debemos tener en cuenta.</p>
 <ol>
-<li>Take care of the case when the ball hits the bottom wall. In the prototype you've been building, the ball just bounces off this wall like all the others, but that makes the game pretty hard to lose. Modify your loop structure so that it tests for hitting the bottom wall as one of its terminating conditions.</li>
-<li>Check for the other terminating condition, which is hitting the last brick. How do you know when you've done so? Although there are other ways to do it, one of the easiest is to have your program keep track of the number of bricks remaining. Every time you hit one, subtract one from that counter. When the count reaches zero, you must be done. It would be nice to give the player a little feedback that at least indicates whether the game was won or lost.</li>
-<li>Make your game play three turns!</li>
-<li>Test your program to see that it works. If you think everything is working, here is something to try: Just before the ball is going to pass the paddle level, move the paddle quickly so that the paddle collides with the ball rather than vice-versa. Does everything still work, or does your ball seem to get "glued" to the paddle? This error occurs because the ball collides with the paddle, changes direction, and then collides with the paddle again before escaping. How can you fix this bug?</li>
+<li>Ten cuidado en caso de que la bola golpee la pared inferior. En el prototipo que has venido desarrollando la bola simplemente rebota en esta pared igual que lo hace con las demás, pero hace el juego muy difícil de perder. Debes modificar la estructura del ciclo para que en caso de golpear la pared cuente como una de las condiciones centinela que termina el juego.</li>
+<li>Revisa si existen otras centinelas que terminen el juego, una de ellas es golpear el ultimo ladrillo. Hay múltiples formas de hacerlo, una de las más fáciles es llevar la cuenta de cuantos ladrillos quedan y cada vez que se golpea uno se resta uno del contador; al llegar a cero el juego se debe terminar. También es buena idea darle un poco de retroalimentación al jugador y hacerle saber que ganó o perdió.</li>
+<li>¡Haz que el juego tenga solo 3 vidas!</li>
+<li>Prueba el juego para saber si funciona. Si crees que todo funciona como debería aquí hay algo que puedes probar: Justo cuando la bola vaya a pasar el nivel de la raqueta, muévela rápidamente de tal forma que la raqueta golpee la bola y no al revés. Después de hacerlo, ¿Sigue funcionando? ¿O se queda pegada a la paleta? Esto ocurre ya que la bola golpea a la raqueta y cambia su dirección, sin embargo, antes de moverse vuelve a golpear la raqueta. ¿Cómo se puede arreglar este error?</li>
 </ol>
 <h2 id="extensions"><span style="color:blue">Extensions</span></h2>
-<p>If you have the basic play working well, then this would be a great opportunity to go above and beyond. Here are a few ideas of for possible extensions (of course, we encourage you to use your imagination to come up with other ideas as well):</p>
+<p>Si tienes el juego básico funcionando correctamente entonces es una gran oportunidad para ir un poco más allá. Aquí hay un par de ideas para extender un poco el ejercicio, aunque por supuesto te animamos a que des rienda suelta a tu imaginación:</p>
 <ul>
-<li><strong>Add sounds.</strong> It can be fun to add sound effects to your game, such as a sound whenever the ball bounces, whenever a brick is removed, whenever the user wins, and so forth.  To do this, first, add the sound file you want to use to your PyCharm project on your computer.  (Drag the file into the folder containing the project files on your computer).  Then, you'll need to install the library that can play sound files.  First open a "terminal" window: the easiest way to do this is to use the “Terminal” tab within PyCharm on the lower-left (next to the “Run” and “Python Console” tabs). Type the following 2 commands below into the Terminal.  <strong>The second one is for Mac only</strong>.  On Windows, type <code>py</code> instead of <code>python3</code>:</li>
+<li><strong>Añádele sonido. </strong> Puede ser divertido añadirle efectos de sonido a tu juego, uno de ellos podría ser uno que indique cuando la bola rebota, otro puede ser el de un ladrillo siendo removido o incluso el jugador ganando, ¡entonces adelante!. Para hacer esto es necesario añadir el archivo de sonido que quieres usar a tu proyecto de PyCharm en tu computador (arrástralo hasta la carpeta que contiene el resto de archivos). Después de ello debes instalar la librería que te permita reproducir sonidos, para ello ve a la pestaña que dice terminal en PyCharm en la esquna inferior izquierda (Está al lado de la pestaña “Run” y “Python Console”). Escribe los siguientes comandos en la terminal:</li>
 </ul>
-<pre><code>&gt; python3 -m pip install playsound
-...prints stuff...
-&gt; python3 -m pip install pyobjc
-...prints stuff...
+<pre><code># En Windows, escribe &gt;
+py -m pip install playsound
+
+# En Mac, escribe
+python3 -m pip install playsound
+
+...Imprimiendo...
+python3 -m pip install pyobjc
+...Imprimiendo...
 </code></pre>
-<p>Next, add the following import at the top of your program - <strong>make sure to use the correct one for Mac or PC:</strong></p>
-<pre><code># Use this for Mac
+<p>Después, agregue las siguientes importaciones al inicio de su código - <strong>asegurate de que sea el adecuado para Mac o PC:</strong></p>
+<pre><code># Utiliza este código en Mac
 from playsound import playsound
 
-# Use this for PC
+# Utiliza este código en PC
 from winsound import PlaySound,SND_FILENAME,SND_ASYNC
 </code></pre>
-<p>Finally, whenever you want to play a sound in your program, call the following function - <strong>make sure to use the correct one for Mac or PC</strong>:</p>
-<pre><code># Use this for Mac
+<p>Finalmente, cuando quieras reproducir un sonido en tu programa, utiliza la siguiente función - <strong>asegurate de que sea el adecuado para Mac o PC:</strong></p>
+<pre><code># Utiliza este código en Mac
 playsound('mysoundfile.au', block=False)
 
-# Use this for PC
+# Utiliza este código en PC
 PlaySound('mysoundfile.au', SND_FILENAME | SND_ASYNC)
 </code></pre>
-<p>You should replace <code>'mysoundfile.au'</code> with the name of the sound file in your project.</p>
-<p>We include <code>bounce.au</code> as a bounce sound you can use.  On Windows, you should use the included <code>bounce.wav</code> sound instead (<code>.au</code> files won't work).</p>
+<p>Debes reemplazar el archivo <code>'mysoundfile.au'</code> con el nombre del archivo de sonido en tu proyecto.</p>
+<p>Incluimos <code>bounce.au</code> que puedes utilizar para el sonido del rebote. Deberías utilizar el archivo  <code>bounce.wav</code> en Windows (el archivo <code>.au</code> no funcionaria).</p>
 <ul>
-<li><strong>Improve the user control over bounces.</strong>  The program gets rather boring if the only thing the player has to do is hit the ball.  It is far more interesting if the player can control the ball by hitting it at different parts of the paddle.  The way the old arcade game worked was that the ball would bounce in both the x and y directions if you hit it on the edge of the paddle from which the ball was coming.  The web version implements this feature.</li>
-<li><strong>Use your imagination.</strong> What else have you always wanted a game like this to do?</li>
+<li><strong>Mejora el control del usuario sobre los rebotes.</strong> El programa será bastante aburrido si lo único que tiene que hacer el jugador es pegarle a la pelota. Será mucho más interesante si el jugador puede controlar la pelota golpeándola en diferentes partes de la paleta. La forma en que funcionaba el viejo juego de arcade era que la pelota rebota en las direcciones X y Y si la golpeabas en el borde de la paleta de donde venía la pelota. La versión web implementa esta función.</li>
+<li><strong>Usa tu imaginación.</strong> ¿Qué más has querido hacer con un juego como este?</li>
 </ul>
 	</div>
 </div>
