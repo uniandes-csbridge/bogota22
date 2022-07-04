@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-<title>CS Bridge  | Snow</title>
+<title>CS Bridge  | Nieve</title>
 
 <!-- Fonts -->
 <!--<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700,900,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -384,28 +384,23 @@ visible-after, to ensure they display when you want them to.
 								<a href="../../es/projects/stringArt.html">Arte de cuerdas</a>
 							</li>
 						<li 
-								class="dropdown-header visible-after" data-visible-after="2022070311"
+								class="dropdown-header visible-after" data-visible-after="2022070406"
 						>
 							Animación
 						</li>
 
 							<li
-									class="visible-after" data-visible-after="2022070311"
-							>
-								<a href="../../es/#">Comprobación de conceptos</a>
-							</li>
-							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/mysterySquare.html">Cuadrado misterioso</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/bouncingBall.html">Pelota que rebota</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/shortFilm.html">Cortometraje</a>
 							</li>
@@ -559,18 +554,18 @@ visible-after, to ensure they display when you want them to.
 								<a href="../../es/projects/drawPeople/">Dibuja Personas</a>
 							</li>
 						<li 
-								class="dropdown-header visible-after" data-visible-after="2022070311"
+								class="dropdown-header visible-after" data-visible-after="2022070406"
 						>
 							Animación
 						</li>
 
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/moveToCenter/">Ir al centro</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/gravityBall/">Gravedad Ball</a>
 							</li>
@@ -738,7 +733,7 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Header -->
 <div id="pageHeader">
 	<h1>
-		Snow
+		Nieve
 	</h1>
 
 		<p>
@@ -750,17 +745,18 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>Examples: <a href="../../en/projects/rocketPaddle/">Rockets</a><br/>
-File: <code>snow.py</code></p>
-<p>Animate circles (snow) falling down from the sky and piling up on the ground.</p>
+		<p>Examples: <a href="../../es/projects/rocketPaddle/">Cohetes</a><br/>
+File: <code>nieve.py</code></p>
+<p>Anime los copitos de nieve que caen del cielo y se acumulan en el suelo.</p>
 <p><img src="../../img/projects/snow/snow.png" alt="a screenshot of the snow program with snow falling and stopping at the bottom of the screen" class="center" style="width: 100%; border: 1px solid black" /></p>
-<p>Use an animation loop. Each time through the loop:</p>
+<p>Utilice un bucle de animación. Cada vez, a través del bucle:</p>
 <ol>
-<li>Animate all snow flakes not on the ground</li>
-<li>Generate a new snowflake at the top of the screen with 10% probability, at a random horizontal location</li>
-<li>Call <code>update()</code> on the canvas</li>
-<li>Pause for 10 milliseconds</li>
+<li>Anime todos los copos de nieve que no han tocado el suelo</li>
+<li>Genere un nuevo copo de nieve en la parte superior de la pantalla con un 10% de probabilidad, en una ubicación horizontal aleatoria.</li>
+<li>Recuerde ejecutar <code>canvas.update()</code> al final de cada ciclo.</li>
+<li>Pausa durante 10 milisegundos</li>
 </ol>
+<p>Nota: ¿Cómo puedes hacer un seguimiento de los copos de nieve que existen? Tendrás que guardarlos en alguna colección y actualiza todos los que no han tocado el suelo, en cada iteración.</p>
 	</div>
 </div>
 

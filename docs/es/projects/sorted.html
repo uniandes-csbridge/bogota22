@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-<title>CS Bridge  | Sorted Numbers</title>
+<title>CS Bridge  | Números ordenados</title>
 
 <!-- Fonts -->
 <!--<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700,900,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -384,28 +384,23 @@ visible-after, to ensure they display when you want them to.
 								<a href="../../es/projects/stringArt.html">Arte de cuerdas</a>
 							</li>
 						<li 
-								class="dropdown-header visible-after" data-visible-after="2022070311"
+								class="dropdown-header visible-after" data-visible-after="2022070406"
 						>
 							Animación
 						</li>
 
 							<li
-									class="visible-after" data-visible-after="2022070311"
-							>
-								<a href="../../es/#">Comprobación de conceptos</a>
-							</li>
-							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/mysterySquare.html">Cuadrado misterioso</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/bouncingBall.html">Pelota que rebota</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/shortFilm.html">Cortometraje</a>
 							</li>
@@ -559,18 +554,18 @@ visible-after, to ensure they display when you want them to.
 								<a href="../../es/projects/drawPeople/">Dibuja Personas</a>
 							</li>
 						<li 
-								class="dropdown-header visible-after" data-visible-after="2022070311"
+								class="dropdown-header visible-after" data-visible-after="2022070406"
 						>
 							Animación
 						</li>
 
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/moveToCenter/">Ir al centro</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/gravityBall/">Gravedad Ball</a>
 							</li>
@@ -738,7 +733,7 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Header -->
 <div id="pageHeader">
 	<h1>
-		Sorted Numbers
+		Números ordenados
 	</h1>
 
 		<p>
@@ -750,55 +745,37 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>Ask the user to enter 10 numbers, then print those numbers in sorted order.  Here's example output:</p>
-<pre><code>&gt; 9
-&gt; 2
-&gt; 12
-&gt; 34
-&gt; -5
-&gt; 12
-&gt; 0
-&gt; 23
-&gt; 4
-&gt; 1
--5
-0
-1
-2
-4
-9
-12
-12
-23
-34
+		<p>Pida al usuario que ingrese menos de 10 números, luego imprima esos números ordenados, de menor a mayor.</p>
+<p><center>
+  <img style="width:500px" src="../../img/projects/sorted/demo.png">
+</center></p>
+<p>Almacena los números que el usuario ingresó en una list. Puedes ordenar el contenido de un list usando:</p>
+<pre><code>mi_lista.sort()
 </code></pre>
-<p>Store the numbers that the user entered in a list. You can sort the content of a list using:</p>
-<pre><code>my_list.sort()
-</code></pre>
-<p>Calling sort re-orders the elements in the specified list. For example, calling sort on the following list has the given result:</p>
+<p>El llamado a esta funcion ordena los elementos de la lista pasada, de menor a mayor. Por ejemplo, el llamado del método sobre la siguiente lista tiene el resultado dado:</p>
 <p><img alt="Image of list of numbers before and after sorting - afterwards the list is in ascending order" src="../../img/projects/sorted/sorting.png" style="width: 400px" /></p>
-<h2 id="hints">Hints</h2>
-<p>To create a list of numbers use:</p>
-<pre><code>my_list = []
+<h2 id="consejos">Consejos</h2>
+<p>Para crear una lista de números use:</p>
+<pre><code>mi_lista = []
 </code></pre>
-<p>Recall that you can read an integer from the user using:</p>
-<pre><code>number = int(input(prompt))
+<p>Recuerde que puede leer un entero del usuario usando:</p>
+<pre><code>numero = int(input(&quot;mensaje&quot;))
 </code></pre>
-<p>To add an element to a list:</p>
-<pre><code>my_list.append(newValue)
+<p>Para agregar un elemento a una lista:</p>
+<pre><code>mi_lista.append(nuevoValor)
 </code></pre>
-<p>To get an element from a list:</p>
-<pre><code>my_list[index]
+<p>Para obtener un elemento de una lista:</p>
+<pre><code>mi_lista[indice]
 </code></pre>
-<p>To loop over all elements in a list:</p>
-<pre><code>for i in range(len(my_list)):
-    # do something with my_list[i]
-}
+<p>Para recorrer todos los elementos de una lista:</p>
+<pre><code>for i in range(len(mi_lista)):
+    valor = mi_lista[i]
+    # haz algo con valor
 
 -- OR --
 
-for elem in my_list:
-    # do something with elem
+for valor in mi_lista:
+    # haz algo con valor
 </code></pre>
 	</div>
 </div>

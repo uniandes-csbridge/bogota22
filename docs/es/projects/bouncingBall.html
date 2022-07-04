@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-<title>CS Bridge  | Bouncing Ball</title>
+<title>CS Bridge  | Pelota que rebota</title>
 
 <!-- Fonts -->
 <!--<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700,900,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
@@ -384,28 +384,23 @@ visible-after, to ensure they display when you want them to.
 								<a href="../../es/projects/stringArt.html">Arte de cuerdas</a>
 							</li>
 						<li 
-								class="dropdown-header visible-after" data-visible-after="2022070311"
+								class="dropdown-header visible-after" data-visible-after="2022070406"
 						>
 							Animación
 						</li>
 
 							<li
-									class="visible-after" data-visible-after="2022070311"
-							>
-								<a href="../../es/#">Comprobación de conceptos</a>
-							</li>
-							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/mysterySquare.html">Cuadrado misterioso</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/bouncingBall.html">Pelota que rebota</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/shortFilm.html">Cortometraje</a>
 							</li>
@@ -559,18 +554,18 @@ visible-after, to ensure they display when you want them to.
 								<a href="../../es/projects/drawPeople/">Dibuja Personas</a>
 							</li>
 						<li 
-								class="dropdown-header visible-after" data-visible-after="2022070311"
+								class="dropdown-header visible-after" data-visible-after="2022070406"
 						>
 							Animación
 						</li>
 
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/moveToCenter/">Ir al centro</a>
 							</li>
 							<li
-									class="visible-after" data-visible-after="2022070311"
+									class="visible-after" data-visible-after="2022070406"
 							>
 								<a href="../../es/projects/gravityBall/">Gravedad Ball</a>
 							</li>
@@ -738,11 +733,11 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Header -->
 <div id="pageHeader">
 	<h1>
-		Bouncing Ball
+		Pelota que rebota
 	</h1>
 
 		<p>
-			Credit: Based on an example by Mehran Sahami
+			Credit: Basado en un ejemplo de Mehran Sahami
 		</p>
 </div>
 <hr/>
@@ -750,32 +745,33 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>File: <code>bouncing_ball.py</code></p>
-<p>Write a graphics program that creates a ball and makes it bounce around the screen. Ignore gravity and have a collision with the right or left wall reflect the x direction of the ball, and have a collision with the top or bottom wall change the y direction of the ball.</p>
-<p>The figure below shows a ball moving through a bounce with the bottom wall.</p>
+		<p>Handouts: <a href="../../es/resources/graphics.html">Graphics Reference</a><br/>
+File: <code>pelota_que_rebota.py</code></p>
+<p>Escribe un programa que cree una pelota y la haga rebotar en la pantalla. Si la pelota rebota contra las paredes izquierda o derecha, se refleja la dirección x de la bola. Si la pelota rebota contra las paredes superior e inferior, la bola cambia de dirección. No se tiene en cuenta la gravedad.</p>
+<p>La siguiente figura muestra una pelota que se mueve tras rebotar con la pared inferior.</p>
 <p><center>
   <img style="width:600px;" src="../../img/projects/bouncingBall/demo.png">
 </center></p>
-<h2 id="milestone-1-create-a-ball">Milestone 1: Create a Ball</h2>
-<p>It can be any size.  Make it start at a random onscreen location.</p>
-<h2 id="milestone-2-make-it-move">Milestone 2: Make it move</h2>
-<p>Loop forever and in the loop update the ball and pause.  You can pause by adding <code>import time</code> to the top of your program and doing the following:</p>
-<pre><code>time.sleep(seconds)
+<p><em>Importante</em>: para que desarrolles con éxito el ejercicio es necesario que revises cada una de las metas que se muestran a continuación. Si divides tu programa en partes más pequeñas será más fácil crearlo.</p>
+<h2 id="hito-1-crear-una-pelota">Hito 1: Crear una pelota</h2>
+<p>Crea una pelota de cualquier tamaño, en cualquier ubicacion que quieras. Trata de usar constantes para el tamaño</p>
+<h2 id="hito-2-haz-que-se-mueva">Hito 2: Haz que se mueva</h2>
+<p>Crea un ciclo infinito y dentro del ciclo actualiza la pelota y pausa. Puedes pausar usando la funcion:</p>
+<pre><code>time.sleep(segundos)
 </code></pre>
-<p>If you don't pause, the computer will animate faster than the human eye can see the movement!</p>
-<p>There is also a function to move a graphical shape on the canvas:</p>
-<pre><code>canvas.move(object, dx, dy)
+<p>¡Si no hace una pausa, la computadora animará más rápido para que el ojo humano pueda ver el movimiento!</p>
+<p>También hay una funcion para mover una forma gráfica en el lienzo:</p>
+<pre><code>canvas.move(objeto, dx, dy)
 </code></pre>
-<p><em>dx</em> is the number of pixels the object will move in the x direction.<BR>
-<em>dy</em> is the number of pixels the object will move in the y direction.</p>
-<h2 id="milestone-3-bounce">Milestone 3: Bounce</h2>
-<p>Now, before you update the position of the ball, you should check if the ball has collided with the wall and if so you should update the direction it is moving.</p>
-<p>Reflections should follow the rule "the angle of incidence equals the angle of reflection". You can implement this by flipping the x direction if you hit a left or right wall and flipping the y direction if you hit a bottom or top wall.</p>
-<p>How do you figure out the position of the ball? You can use the functions:</p>
+<p><strong>dx</strong> es el número de píxeles que el objeto se moverá en la dirección x.<BR>
+<strong>dy</strong> es el número de píxeles que el objeto se moverá en la dirección y.</p>
+<h2 id="hito-3-rebote">Hito 3: Rebote</h2>
+<p>Ahora, antes de actualizar la posición de la bola, debe verificar si la bola ha chocado con la pared y, de ser así, debe actualizar la dirección en la que se está moviendo.</p>
+<p>Las reflexiones deben seguir la regla de que el ángulo de incidencia es igual al ángulo de reflexión. Esto resulta ser fácil de implementar, simplemente gira la dirección x si golpeas una pared izquierda o derecha y gira la dirección y si golpeas una pared inferior o superior.</p>
+<p>¿Cómo sabes la posición de la pelota? Puedes usar los métodos:</p>
 <pre><code>canvas.get_left_x(obj)
 canvas.get_top_y(obj)
 </code></pre>
-<p>A python function that may come in handy is <code>abs(val)</code> - it returns the absolute value of a number.</p>
 	</div>
 </div>
 
