@@ -457,6 +457,26 @@ visible-after, to ensure they display when you want them to.
 							</li>
 			</ul>
 		</li>
+		<li 
+				class="dropdown-submenu visible-after" data-visible-after="2022070511"
+		>
+			<a tabindex="-1" href="#">5: Breakout</a>
+
+			<!-- When hovered, we want to show another side popup with programs -->
+			<ul class="dropdown-menu">
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070511"
+						>
+							Breakout
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022070511"
+							>
+								<a href="../../es/projects/breakout.html">Breakout</a>
+							</li>
+			</ul>
+		</li>
 </ul>					</li>
 
 					<!-- Examples dropdown -->
@@ -921,7 +941,7 @@ def my_func(...):
     ...
     return var1, var2
 </code></pre>
-<h2 id="3-a-agrega-la-raqueta">3. A Agrega la raqueta</h2>
+<h2 id="3-agrega-la-raqueta">3. Agrega la raqueta</h2>
 <p>El siguiente paso es crear la raqueta. Solo hay una raqueta, que es un rectángulo relleno. Incluso conoces su posición en relación con la parte inferior de la ventana.</p>
 <p>El desafío de crear la raqueta es hacer que siga al ratón del computador. Aquí, sin embargo, solo debes prestar atención a la coordenada x del ratón porque la posición y de la raqueta es fija.</p>
 <p>Cada vez que pase por el ciclo de animación, solicita la ubicación del ratón y mueve el rectángulo que representa la raqueta. Para obtener la ubicación del ratón, puedes usar la función del lienzo <code>canvas.get_mouse_x()</code>:</p>
