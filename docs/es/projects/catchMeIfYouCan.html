@@ -434,6 +434,27 @@ visible-after, to ensure they display when you want them to.
 							>
 								<a href="../../es/projects/breakout.html">Breakout (Hito 1)</a>
 							</li>
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070506"
+						>
+							Mouse y Keyboard
+						</li>
+
+							<li
+									class="visible-after" data-visible-after="2022070506"
+							>
+								<a href="../../es/projects/mouseLocation.html">MouseTracker</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070506"
+							>
+								<a href="../../es/projects/catchMeIfYouCan.html">Atrápame si puedes</a>
+							</li>
+							<li
+									class="visible-after" data-visible-after="2022070506"
+							>
+								<a href="../../es/projects/breakout.html">Breakout (Hito 1)</a>
+							</li>
 			</ul>
 		</li>
 </ul>					</li>
@@ -612,6 +633,12 @@ visible-after, to ensure they display when you want them to.
 								class="dropdown-header visible-after" data-visible-after="2022070411"
 						>
 							Listas
+						</li>
+
+						<li 
+								class="dropdown-header visible-after" data-visible-after="2022070506"
+						>
+							Mouse y Keyboard
 						</li>
 
 			</ul>
@@ -817,7 +844,7 @@ filePath - the total path to the markdown file being rendered in this template
 <!-- Problem description -->
 <div class="row">
 	<div class="col-xs-12">
-		<p>Folletos: <a href="../../es/resources/graphics.html">Graphics Reference</a>
+		<p>Folletos: <a href="../../es/resources/graphics.html">Graphics Reference</a></br>
 File: <code>atrapame_si_puedes.py</code></p>
 <ol>
 <li>Agrega un cuadrado azul "escurridizo" al lienzo.</li>
@@ -831,15 +858,17 @@ File: <code>atrapame_si_puedes.py</code></p>
 <p><center>
   <img style="width:500px;border: 1px solid #000000" src="../../img/projects/catchMeIfYouCan/demo2.png">
 </center></p>
-<p>How can we tell if the mouse is touching the sneaky square?  There is a function you can use called <code>find_overlapping</code> on the canvas.  It gives us back a list of all objects on the canvas that overlap with a given square, which we can iterate over.  For example:</p>
-<pre><code>overlapping_objects = canvas.find_overlapping(x1, y1, x2, y2)
-for overlapping_object in overlapping_objects:
-    # do something with overlapping_object ...
+<p>¿Como podemos probar si el mouse esta tocando el cuadrado "escurridizo"? Hay dos opciones:</p>
+<p>La primera opción es la funcion <code>find_element_at(x, y)</code>. Esta funcion toma una ubicaciuon x, y y devuelve el elemento superior en esta ubicación. Por ejemplo:</p>
+<pre><code>objeto = canvas.find_element_at(x, y)
+if objeto:
+  # haz algo con objeto
 </code></pre>
-<p>The coordinates provided to <code>find_overlapping</code> are the top-left corner and bottom-right corner of the box you want to get all overlapping objects for.  You can also specify a single point, like this:</p>
-<pre><code>overlapping_objects = canvas.find_overlapping(x, y, x, y)
+<p>La segunda opción es la funcion <code>find_overlapping(x1, y1, x2, y2)</code>, que va a devolver una lista de objetos en el lienzo que se superponen con el cuadro especificado de las coordenadas (x1, y1) a (x2, y2). Por ejemplo:</p>
+<pre><code>objetos_superpuestos = canvas.find_overlapping(x1, y1, x2, y2)
+for objeto in objetos_superpuestos:
+    # haz algo con objeto ...
 </code></pre>
-<p>This will get the objects overlapping with the point <code>(x, y)</code>.</p>
 	</div>
 </div>
 
